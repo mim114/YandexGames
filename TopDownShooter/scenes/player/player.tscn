@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://os4mlc8qha21"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_aw8e2"]
+[ext_resource type="Texture2D" uid="uid://cxblrbegja8qk" path="res://src/graphics/player/player.png" id="1_jxxij"]
+[ext_resource type="AudioStream" uid="uid://drtqklq04bqi1" path="res://src/sound/container_hit.mp3" id="3_wkwkw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8lpl"]
+radius = 29.0
+height = 108.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 30
+script = ExtResource("1_aw8e2")
+metadata/_edit_group_ = true
+
+[node name="PlayerImage" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_jxxij")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-24, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_w8lpl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
+limit_left = -6735
+limit_top = -1670
+limit_right = 7883
+limit_bottom = 3260
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="LaserStartPosition" type="Node2D" parent="."]
+
+[node name="Marker1" type="Marker2D" parent="LaserStartPosition"]
+position = Vector2(80, 8)
+
+[node name="Marker2" type="Marker2D" parent="LaserStartPosition"]
+position = Vector2(80, 16)
+
+[node name="Marker3" type="Marker2D" parent="LaserStartPosition"]
+position = Vector2(80, 24)
+
+[node name="GrenadeStartPosition" type="Node2D" parent="."]
+
+[node name="Marker" type="Marker2D" parent="GrenadeStartPosition"]
+position = Vector2(88, 16)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wkwkw")
+
+[node name="TimerAttack2" type="Node" parent="."]
+
+[node name="TimerShoot" type="Timer" parent="TimerAttack2"]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[node name="TimerGrenade" type="Timer" parent="TimerAttack2"]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="TimerAttack2/TimerShoot" to="." method="_on_timer_shoot_timeout"]
+[connection signal="timeout" from="TimerAttack2/TimerGrenade" to="." method="_on_timer_grenade_timeout"]

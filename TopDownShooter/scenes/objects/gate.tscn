@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://xq37haan4q51"]
+
+[ext_resource type="Script" path="res://scripts/objects/gate.gd" id="1_5lkwu"]
+[ext_resource type="Texture2D" uid="uid://vw276io1recx" path="res://src/graphics/objects/gate.png" id="1_55nvr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jk3et"]
+radius = 88.0
+height = 836.0
+
+[node name="Gate" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_5lkwu")
+metadata/_edit_group_ = true
+
+[node name="Gate" type="Sprite2D" parent="."]
+position = Vector2(401, -544)
+texture = ExtResource("1_55nvr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-1037, -1326, -1036, -14, -1032, 31, -1017, 76, -994, 122, -962, 158, -927, 188, -881, 214, -837, 229, -787, 234, 33, 235, 34, 112, 42, 89, 57, 71, 73, 60, 95, 53, 821, 53, 847, 57, 870, 73, 885, 95, 890, 123, 891, 234, 1731, 234, 1781, 225, 1824, 205, 1869, 178, 1902, 143, 1932, 100, 1952, 55, 1960, 6, 1959, -41, 1961, -1324)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(464, 152)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jk3et")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
