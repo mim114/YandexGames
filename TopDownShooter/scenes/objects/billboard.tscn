@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7vonau68xtto"]
+[gd_scene load_steps=4 format=3 uid="uid://b7vonau68xtto"]
 
 [ext_resource type="Texture2D" uid="uid://clcg3hj1x7ksm" path="res://src/graphics/objects/Billboard.png" id="1_m2mf5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30rce"]
 size = Vector2(1216, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_x1t1x"]
+polygon = PackedVector2Array(614, -40, 614, 29, 523.8, 29, 517, 38, 514.4, 38, 455, 38.6, 455, 36.7, 449.9, 29, -450.2, 29, -459.6, 38, -468, 39.7, -509.2, 41, -519, 36.7, -524.1, 29, -614, 29, -614, -40)
 
 [node name="Billboard" type="StaticBody2D"]
 collision_layer = 4
@@ -16,3 +19,6 @@ texture = ExtResource("1_m2mf5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_30rce")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_x1t1x")

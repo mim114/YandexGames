@@ -10,3 +10,7 @@ func _process(_delta) -> void:
 	var direction = Vector2.RIGHT
 	velocity = direction * SPEED
 	move_and_slide()
+
+
+func hit() -> void:
+	print("ai")

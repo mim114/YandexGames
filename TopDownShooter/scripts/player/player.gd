@@ -5,8 +5,8 @@ extends CharacterBody2D
 signal laser_shot(pos, direction)
 signal throw_grenade(pos, direction)
 
-const SPEED : int = 500
-
+var max_speed : int    = 500
+var speed : int        = max_speed
 var can_laser : bool   = true
 var can_grenade : bool = true
 
@@ -14,7 +14,7 @@ var can_grenade : bool = true
 
 func _process(_delta) -> void:
 	var direction : Vector2 = Input.get_vector("left", "right", "up", "down")
-	velocity = direction * SPEED
+	velocity = direction * speed
 	var player_direction = (get_global_mouse_position() - position).normalized()
 
 	look_at(get_global_mouse_position())

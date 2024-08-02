@@ -1,0 +1,233 @@
+[gd_scene load_steps=11 format=3 uid="uid://dsm7wy5t7sdj1"]
+
+[ext_resource type="PackedScene" uid="uid://bdcyq5pmnynl0" path="res://scenes/levels/level.tscn" id="1_vkgvr"]
+[ext_resource type="Texture2D" uid="uid://2ltsu2w6v5sp" path="res://src/graphics/ground/stones.png" id="2_5vamc"]
+[ext_resource type="Texture2D" uid="uid://chxfjxpxugfd1" path="res://src/graphics/decals/dirt_patch.png" id="3_sopkb"]
+[ext_resource type="Texture2D" uid="uid://bo722o5vnv8vy" path="res://src/graphics/decals/moss/moss_1.png" id="4_qgwsn"]
+[ext_resource type="Texture2D" uid="uid://cg7mquw3bcor3" path="res://src/graphics/decals/moss/moss_2.png" id="5_cgpl4"]
+[ext_resource type="Texture2D" uid="uid://d3q38df7rvnwp" path="res://src/graphics/decals/moss/moss_3.png" id="6_0iwey"]
+[ext_resource type="Texture2D" uid="uid://bmi2tuac6jusc" path="res://src/graphics/decals/moss/moss_4.png" id="7_vjix1"]
+[ext_resource type="Texture2D" uid="uid://bhp81r5palbm7" path="res://src/graphics/decals/moss/moss_5.png" id="8_1rd7d"]
+[ext_resource type="Texture2D" uid="uid://qohs58a76cjj" path="res://src/graphics/objects/toilet.png" id="9_l8hs5"]
+[ext_resource type="Texture2D" uid="uid://qgact6p26bc2" path="res://src/graphics/decals/blood.png" id="10_yg6g6"]
+
+[node name="Outside" instance=ExtResource("1_vkgvr")]
+
+[node name="Graund" type="Node2D" parent="." index="1"]
+
+[node name="Soil" type="Sprite2D" parent="Graund" index="0"]
+texture_repeat = 2
+position = Vector2(574, 792)
+texture = ExtResource("2_5vamc")
+region_enabled = true
+region_rect = Rect2(-5899.17, -70.9253, 14618.9, 4941.9)
+
+[node name="Decoration1" type="Sprite2D" parent="Graund" index="1"]
+position = Vector2(-687, 551)
+texture = ExtResource("3_sopkb")
+
+[node name="Decoration2" type="Sprite2D" parent="Graund" index="2"]
+position = Vector2(2890, 2661)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_sopkb")
+
+[node name="Moss" type="Node2D" parent="Graund" index="3"]
+
+[node name="Moss1" type="Sprite2D" parent="Graund/Moss" index="0"]
+position = Vector2(2097, 2942)
+texture = ExtResource("4_qgwsn")
+
+[node name="Moss2" type="Sprite2D" parent="Graund/Moss" index="1"]
+position = Vector2(-1917, 2991)
+texture = ExtResource("5_cgpl4")
+
+[node name="Moss3" type="Sprite2D" parent="Graund/Moss" index="2"]
+position = Vector2(-2507, 2853)
+texture = ExtResource("6_0iwey")
+
+[node name="Moss4" type="Sprite2D" parent="Graund/Moss" index="3"]
+position = Vector2(2163, -1339)
+texture = ExtResource("7_vjix1")
+
+[node name="Moss5" type="Sprite2D" parent="Graund/Moss" index="4"]
+position = Vector2(2470, -1417)
+texture = ExtResource("8_1rd7d")
+
+[node name="Moss6" type="Sprite2D" parent="Graund/Moss" index="5"]
+position = Vector2(-1208, -1090)
+texture = ExtResource("4_qgwsn")
+
+[node name="Moss7" type="Sprite2D" parent="Graund/Moss" index="6"]
+position = Vector2(-1183, -785)
+texture = ExtResource("6_0iwey")
+
+[node name="Moss8" type="Sprite2D" parent="Graund/Moss" index="7"]
+position = Vector2(3236, -1464)
+texture = ExtResource("8_1rd7d")
+
+[node name="Moss9" type="Sprite2D" parent="Graund/Moss" index="8"]
+position = Vector2(4085, -1453)
+texture = ExtResource("7_vjix1")
+
+[node name="Moss10" type="Sprite2D" parent="Graund/Moss" index="9"]
+position = Vector2(4667, -1475)
+texture = ExtResource("6_0iwey")
+
+[node name="Moss11" type="Sprite2D" parent="Graund/Moss" index="10"]
+position = Vector2(5099, -1464)
+texture = ExtResource("4_qgwsn")
+
+[node name="Moss12" type="Sprite2D" parent="Graund/Moss" index="11"]
+position = Vector2(6153, -1531)
+texture = ExtResource("8_1rd7d")
+
+[node name="Moss13" type="Sprite2D" parent="Graund/Moss" index="12"]
+position = Vector2(6879, -1440)
+texture = ExtResource("4_qgwsn")
+
+[node name="Moss14" type="Sprite2D" parent="Graund/Moss" index="13"]
+position = Vector2(7430, -1463)
+texture = ExtResource("7_vjix1")
+
+[node name="Moss15" type="Sprite2D" parent="Graund/Moss" index="14"]
+position = Vector2(7583, -264)
+texture = ExtResource("8_1rd7d")
+
+[node name="Moss16" type="Sprite2D" parent="Graund/Moss" index="15"]
+position = Vector2(7633, 307)
+texture = ExtResource("5_cgpl4")
+
+[node name="Moss17" type="Sprite2D" parent="Graund/Moss" index="16"]
+position = Vector2(7571, 540)
+texture = ExtResource("6_0iwey")
+
+[node name="Moss18" type="Sprite2D" parent="Graund/Moss" index="17"]
+position = Vector2(7577, 712)
+texture = ExtResource("4_qgwsn")
+
+[node name="Moss19" type="Sprite2D" parent="Graund/Moss" index="18"]
+position = Vector2(7675, 1702)
+texture = ExtResource("8_1rd7d")
+
+[node name="Moss20" type="Sprite2D" parent="Graund/Moss" index="19"]
+position = Vector2(7625, 3027)
+texture = ExtResource("4_qgwsn")
+
+[node name="Moss21" type="Sprite2D" parent="Graund/Moss" index="20"]
+position = Vector2(7358, 3059)
+texture = ExtResource("5_cgpl4")
+
+[node name="Moss22" type="Sprite2D" parent="Graund/Moss" index="21"]
+position = Vector2(7617, 2875)
+texture = ExtResource("6_0iwey")
+
+[node name="Moss23" type="Sprite2D" parent="Graund/Moss" index="22"]
+position = Vector2(7748, 2664)
+texture = ExtResource("8_1rd7d")
+
+[node name="Moss24" type="Sprite2D" parent="Graund/Moss" index="23"]
+position = Vector2(4364, 3166)
+texture = ExtResource("8_1rd7d")
+
+[node name="Moss25" type="Sprite2D" parent="Graund/Moss" index="24"]
+position = Vector2(5368, 3138)
+texture = ExtResource("7_vjix1")
+
+[node name="Moss26" type="Sprite2D" parent="Graund/Moss" index="25"]
+position = Vector2(6220, 3122)
+texture = ExtResource("8_1rd7d")
+
+[node name="Moss27" type="Sprite2D" parent="Graund/Moss" index="26"]
+position = Vector2(-1615, 3117)
+texture = ExtResource("4_qgwsn")
+
+[node name="Moss28" type="Sprite2D" parent="Graund/Moss" index="27"]
+position = Vector2(-2386, 3147)
+texture = ExtResource("8_1rd7d")
+
+[node name="Moss29" type="Sprite2D" parent="Graund/Moss" index="28"]
+position = Vector2(-3824, 3144)
+texture = ExtResource("6_0iwey")
+
+[node name="Moss30" type="Sprite2D" parent="Graund/Moss" index="29"]
+position = Vector2(-4130, 3113)
+texture = ExtResource("4_qgwsn")
+
+[node name="Moss31" type="Sprite2D" parent="Graund/Moss" index="30"]
+position = Vector2(-4009, 2989)
+texture = ExtResource("8_1rd7d")
+
+[node name="Moss32" type="Sprite2D" parent="Graund/Moss" index="31"]
+position = Vector2(-5616, 3174)
+texture = ExtResource("8_1rd7d")
+
+[node name="Moss33" type="Sprite2D" parent="Graund/Moss" index="32"]
+position = Vector2(-6482, 3027)
+texture = ExtResource("5_cgpl4")
+
+[node name="Moss34" type="Sprite2D" parent="Graund/Moss" index="33"]
+position = Vector2(-6425, 2850)
+texture = ExtResource("4_qgwsn")
+
+[node name="Moss35" type="Sprite2D" parent="Graund/Moss" index="34"]
+position = Vector2(-6278, 3135)
+texture = ExtResource("6_0iwey")
+
+[node name="Moss36" type="Sprite2D" parent="Graund/Moss" index="35"]
+position = Vector2(-5967, 3168)
+texture = ExtResource("7_vjix1")
+
+[node name="Moss37" type="Sprite2D" parent="Graund/Moss" index="36"]
+position = Vector2(-6677, 1914)
+texture = ExtResource("8_1rd7d")
+
+[node name="Moss38" type="Sprite2D" parent="Graund/Moss" index="37"]
+position = Vector2(-6632, -77)
+texture = ExtResource("8_1rd7d")
+
+[node name="Moss39" type="Sprite2D" parent="Graund/Moss" index="38"]
+position = Vector2(-6612, 503)
+texture = ExtResource("6_0iwey")
+
+[node name="Moss40" type="Sprite2D" parent="Graund/Moss" index="39"]
+position = Vector2(-5836, -1521)
+texture = ExtResource("6_0iwey")
+
+[node name="Moss41" type="Sprite2D" parent="Graund/Moss" index="40"]
+position = Vector2(-6521, -1458)
+texture = ExtResource("4_qgwsn")
+
+[node name="Moss42" type="Sprite2D" parent="Graund/Moss" index="41"]
+position = Vector2(-5160, -1527)
+texture = ExtResource("4_qgwsn")
+
+[node name="Moss43" type="Sprite2D" parent="Graund/Moss" index="42"]
+position = Vector2(-3615, -1567)
+texture = ExtResource("8_1rd7d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Graund/Moss" index="43"]
+position = Vector2(-1161, 2952)
+rotation = -0.813323
+texture = ExtResource("4_qgwsn")
+
+[node name="Toilet" type="Sprite2D" parent="Graund" index="4"]
+position = Vector2(7733, -789)
+rotation = -1.35612
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_l8hs5")
+
+[node name="Blood1" type="Sprite2D" parent="Graund" index="5"]
+position = Vector2(-3337, 3046)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_yg6g6")
+
+[node name="Blood2" type="Sprite2D" parent="Graund" index="6"]
+position = Vector2(-2330, 403)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("10_yg6g6")
+
+[node name="Blood3" type="Sprite2D" parent="Graund" index="7"]
+position = Vector2(-2313, 139)
+rotation = -1.35612
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_yg6g6")

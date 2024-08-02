@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://xq37haan4q51"]
+[gd_scene load_steps=5 format=3 uid="uid://xq37haan4q51"]
 
 [ext_resource type="Script" path="res://scripts/objects/gate.gd" id="1_5lkwu"]
 [ext_resource type="Texture2D" uid="uid://vw276io1recx" path="res://src/graphics/objects/gate.png" id="1_55nvr"]
@@ -6,6 +6,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jk3et"]
 radius = 88.0
 height = 836.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_almib"]
+polygon = PackedVector2Array(1560, 565.5, 1553.6, 598, 1552.4, 598, 1531.3, 650, 1530.1, 650, 1509.1, 683, 1507.9, 683, 1474.9, 719, 1472.7, 719, 1439.7, 745, 1437.5, 745, 1407.5, 762, 1404.4, 762, 1370.4, 775, 1366.4, 775, 1343.4, 780, 489, 779, 488, 652, 473, 621, 441, 601, -305, 600, -348, 618, -369, 656, -367, 779, -1216.8, 780, -1256, 772.7, -1256, 771.4, -1308, 750.3, -1308, 749.1, -1341, 728.1, -1341, 726.9, -1377, 693.9, -1377, 691.7, -1403, 658.7, -1403, 656.5, -1420, 626.5, -1420, 623.4, -1433, 589.4, -1433, 585.4, -1441, 543.2, -1441, -780, 1560, -780)
 
 [node name="Gate" type="StaticBody2D"]
 collision_layer = 4
@@ -27,5 +30,9 @@ collision_layer = 16
 position = Vector2(464, 152)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_jk3et")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(401, -544)
+occluder = SubResource("OccluderPolygon2D_almib")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

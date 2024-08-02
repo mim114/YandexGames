@@ -1,14 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://os4mlc8qha21"]
+[gd_scene load_steps=8 format=3 uid="uid://os4mlc8qha21"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_aw8e2"]
 [ext_resource type="Texture2D" uid="uid://cxblrbegja8qk" path="res://src/graphics/player/player.png" id="1_jxxij"]
+[ext_resource type="Texture2D" uid="uid://cb3pcyl50nhr1" path="res://src/graphics/decals/white.png" id="3_be55y"]
 [ext_resource type="AudioStream" uid="uid://drtqklq04bqi1" path="res://src/sound/container_hit.mp3" id="3_wkwkw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8lpl"]
 radius = 29.0
 height = 108.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mn7x3"]
+particle_flag_disable_z = true
+spread = 15.732
+initial_velocity_min = 750.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.3
+color = Color(0.584314, 1, 1, 0.545098)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y50u0"]
+polygon = PackedVector2Array(22.4997, -95.0001, 27.4997, -93.7501, 31.2497, -91.2501, 32.4997, -86.2501, 29.9997, -83.7501, 34.9997, -83.7501, 34.9997, -73.7501, 32.4997, -71.2501, 40.5628, -65.7715, 42.4998, -58.7501, 47.4998, -58.7502, 52.4998, -57.5002, 52.4999, -26.2502, 49.9999, -22.5002, 43.7499, -20.0002, 41.2499, -20.0001, 38.7499, -16.2501, 40, -5.00014, 42.5, -0.000154018, 46.25, 13.7498, 52.5001, 26.2498, 57.5001, 36.2498, 56.2502, 42.4998, 58.7502, 47.4998, 60.0002, 54.9998, 56.2502, 66.2498, 48.7503, 73.7498, 40.0003, 79.9998, 32.5003, 82.4999, 27.5003, 87.4999, 18.7503, 89.9999, 13.7503, 89.9999, 1.25036, 98.75, -9.99964, 98.75, -23.7496, 96.2501, -31.2497, 91.2501, -37.4997, 90.0001, -43.7497, 86.2502, -48.7497, 78.7502, -49.9998, 67.5002, -56.2498, 60.0002, -58.7498, 55.0002, -58.7498, 45.0002, -61.2499, 37.5002, -59.9999, 28.7502, -62.4999, 17.5002, -60, 7.50022, -47.5, 0.00017195, -41.25, -6.24985, -38.75, -6.24986, -30, -11.2499, -31.2501, -16.2499, -27.5001, -21.2499, -20.0001, -29.9999, -16.2501, -33.7499, -12.5001, -37.5, -11.2502, -42.5, -12.5002, -46.25, -12.5002, -50, -6.25022, -60, -5.00026, -71.25, -0.000271797, -75, -0.000311852, -86.25, 6.24969, -85, 3.74968, -88.75, 3.74967, -91.25, 8.74965, -95)
+
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(3, -13)
 collision_mask = 30
 script = ExtResource("1_aw8e2")
 metadata/_edit_group_ = true
@@ -22,15 +37,6 @@ texture = ExtResource("1_jxxij")
 position = Vector2(-24, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_w8lpl")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.6, 0.6)
-limit_left = -6735
-limit_top = -1670
-limit_right = 7883
-limit_bottom = 3260
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
 
 [node name="LaserStartPosition" type="Node2D" parent="."]
 
@@ -47,6 +53,20 @@ position = Vector2(80, 24)
 
 [node name="Marker" type="Marker2D" parent="GrenadeStartPosition"]
 position = Vector2(88, 16)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(80, 16)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_mn7x3")
+texture = ExtResource("3_be55y")
+lifetime = 0.2
+one_shot = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(1, 1)
+rotation = 1.5708
+scale = Vector2(0.8, 0.8)
+occluder = SubResource("OccluderPolygon2D_y50u0")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_wkwkw")

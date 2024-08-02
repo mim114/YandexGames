@@ -9,7 +9,7 @@ height = 80.0
 
 [node name="Laser" type="Area2D"]
 collision_layer = 8
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_bd2da")
 metadata/_edit_group_ = true
 
@@ -22,3 +22,10 @@ texture = ExtResource("1_xjsdp")
 position = Vector2(1, -74)
 scale = Vector2(0.6, 0.6)
 shape = SubResource("CapsuleShape2D_x0lcy")
+
+[node name="SelfDistructionTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="SelfDistructionTimer" to="." method="_on_self_distruction_timer_timeout"]
