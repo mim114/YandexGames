@@ -1,0 +1,151 @@
+[gd_scene load_steps=16 format=3 uid="uid://v3sl24k8et5h"]
+
+[ext_resource type="Texture2D" uid="uid://73kq0axsrlpw" path="res://src/graphics/ui/coin.png" id="1_rb6lk"]
+[ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_w8hmj"]
+[ext_resource type="Texture2D" uid="uid://nb3ooj44edni" path="res://src/graphics/ui/bullet1.png" id="1_xvwsm"]
+[ext_resource type="FontFile" uid="uid://cpwmhkplpbw5" path="res://src/font/subatomic.tsoonami.ttf" id="2_air57"]
+[ext_resource type="Texture2D" uid="uid://ceass14kwc8vu" path="res://src/graphics/ui/grenade.png" id="3_iibro"]
+[ext_resource type="Texture2D" uid="uid://b4v2xolqj10fy" path="res://src/graphics/ui/health.png" id="4_at5os"]
+[ext_resource type="Texture2D" uid="uid://jcag1dpn8tr2" path="res://src/graphics/ui/progress_bar/bg.png" id="6_oaila"]
+[ext_resource type="Texture2D" uid="uid://cbq13fk5ja5fq" path="res://src/graphics/ui/progress_bar/over.png" id="7_lahpt"]
+[ext_resource type="Texture2D" uid="uid://bvhabw8xvdtku" path="res://src/graphics/ui/progress_bar/progress.png" id="7_qt5go"]
+[ext_resource type="Texture2D" uid="uid://1juqw0a2don2" path="res://src/icon/bullet-bill.svg" id="10_yp6mg"]
+[ext_resource type="Texture2D" uid="uid://ddwe6yso83lhi" path="res://src/icon/pocket_flashligh_downt.png" id="11_3jtob"]
+[ext_resource type="Texture2D" uid="uid://brvcuel3gan4y" path="res://src/icon/bullet-bill_hover.png" id="11_e7c82"]
+[ext_resource type="Texture2D" uid="uid://de05dfdkwf1i4" path="res://src/icon/pocket_flashligh_down_hover.png" id="12_gxmr7"]
+[ext_resource type="PackedScene" uid="uid://dybjx2is3na7j" path="res://scenes/ui/transition_layer.tscn" id="14_0yniv"]
+[ext_resource type="AudioStream" uid="uid://bkxl08bkjkl3e" path="res://src/sound/button.mp3" id="15_d7nbq"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_w8hmj")
+
+[node name="Count" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI" type="HBoxContainer" parent="Count"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -286.0
+offset_top = 12.0
+offset_right = 286.0
+offset_bottom = 52.0
+grow_horizontal = 2
+theme_override_constants/separation = 50
+
+[node name="Score" type="HBoxContainer" parent="Count/UI"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ScoreIcon" type="TextureRect" parent="Count/UI/Score"]
+layout_mode = 2
+texture = ExtResource("1_rb6lk")
+expand_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="Count/UI/Score"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.862745, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_air57")
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bullet" type="HBoxContainer" parent="Count/UI"]
+layout_mode = 2
+
+[node name="BulletIcon" type="TextureRect" parent="Count/UI/Bullet"]
+layout_mode = 2
+texture = ExtResource("1_xvwsm")
+expand_mode = 2
+
+[node name="BulletLabel" type="Label" parent="Count/UI/Bullet"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.862745, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_air57")
+theme_override_font_sizes/font_size = 40
+text = "20
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Grenade" type="HBoxContainer" parent="Count/UI"]
+layout_mode = 2
+
+[node name="GrenadeIcon" type="TextureRect" parent="Count/UI/Grenade"]
+layout_mode = 2
+texture = ExtResource("3_iibro")
+expand_mode = 2
+
+[node name="GrenadeLabel" type="Label" parent="Count/UI/Grenade"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.862745, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_air57")
+theme_override_font_sizes/font_size = 40
+text = "5
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="HBoxContainer" parent="Count/UI"]
+layout_mode = 2
+
+[node name="Health" type="TextureRect" parent="Count/UI/Health"]
+layout_mode = 2
+texture = ExtResource("4_at5os")
+expand_mode = 2
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Count/UI/Health"]
+layout_mode = 2
+value = 55.0
+texture_under = ExtResource("6_oaila")
+texture_over = ExtResource("7_lahpt")
+texture_progress = ExtResource("7_qt5go")
+
+[node name="Menu" type="TextureButton" parent="Count"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 528.0
+offset_bottom = 528.0
+scale = Vector2(0.15, 0.15)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_yp6mg")
+texture_hover = ExtResource("11_e7c82")
+ignore_texture_size = true
+
+[node name="PocketFlashlight" type="TextureButton" parent="Count"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -94.0
+offset_top = 16.0
+offset_right = 418.0
+offset_bottom = 528.0
+grow_horizontal = 0
+scale = Vector2(0.15, 0.15)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("11_3jtob")
+texture_hover = ExtResource("12_gxmr7")
+
+[node name="TransitionLayer" parent="." instance=ExtResource("14_0yniv")]
+
+[node name="AudioButton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_d7nbq")
+bus = &"Sound"
+
+[connection signal="mouse_entered" from="Count/Menu" to="." method="_on_menu_mouse_entered"]
+[connection signal="mouse_exited" from="Count/Menu" to="." method="_on_menu_mouse_exited"]
+[connection signal="pressed" from="Count/Menu" to="." method="_on_menu_pressed"]
+[connection signal="mouse_entered" from="Count/PocketFlashlight" to="." method="_on_pocket_flashlight_mouse_entered"]
+[connection signal="mouse_exited" from="Count/PocketFlashlight" to="." method="_on_pocket_flashlight_mouse_exited"]
+[connection signal="pressed" from="Count/PocketFlashlight" to="." method="_on_pocket_flashlight_pressed"]

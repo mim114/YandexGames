@@ -1,0 +1,266 @@
+[gd_scene load_steps=18 format=3 uid="uid://cc3a4k3blqi1q"]
+
+[ext_resource type="Script" path="res://scripts/ui/rules.gd" id="1_fnvaa"]
+[ext_resource type="Texture2D" uid="uid://bj5503wsmi4mj" path="res://src/graphics/menuBackground/ringed_gas_giant_planet.png" id="1_hjojn"]
+[ext_resource type="Texture2D" uid="uid://bcj8bsn33ohse" path="res://src/graphics/rules/first.png" id="2_4jvjd"]
+[ext_resource type="FontFile" uid="uid://cpwmhkplpbw5" path="res://src/font/subatomic.tsoonami.ttf" id="3_yj4fq"]
+[ext_resource type="Texture2D" uid="uid://cwq1i82mjkxhh" path="res://src/graphics/rules/second.png" id="4_i26ot"]
+[ext_resource type="PackedScene" uid="uid://ce78h5gjy342e" path="res://scenes/objects/crate_box.tscn" id="5_7rm4b"]
+[ext_resource type="Texture2D" uid="uid://dldxntwxkmpw8" path="res://src/icon/forward.png" id="6_j75bp"]
+[ext_resource type="Texture2D" uid="uid://y65xols85wmf" path="res://src/icon/back.png" id="6_k4ibf"]
+[ext_resource type="Texture2D" uid="uid://b0qakq545bjx3" path="res://src/icon/back_hover.png" id="7_yy2e2"]
+[ext_resource type="Texture2D" uid="uid://cus86vu2v2yn2" path="res://src/icon/forward_hover.png" id="9_fx8a4"]
+[ext_resource type="Texture2D" uid="uid://jp7hyupqf4dg" path="res://src/icon/menu.png" id="11_g0kk6"]
+[ext_resource type="AudioStream" uid="uid://dbufs51ominm1" path="res://src/music/5 - Stellar Drift .mp3" id="11_ii4b5"]
+[ext_resource type="Texture2D" uid="uid://btq41rtu2kvor" path="res://src/icon/menu_hover.png" id="12_cgimd"]
+[ext_resource type="PackedScene" uid="uid://dybjx2is3na7j" path="res://scenes/ui/transition_layer.tscn" id="14_fuh6k"]
+[ext_resource type="AudioStream" uid="uid://bkxl08bkjkl3e" path="res://src/sound/button.mp3" id="14_ti1yt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_da3nc"]
+bg_color = Color(0.821789, 0.821789, 0.821788, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kouxd"]
+bg_color = Color(0.823529, 0.823529, 0.823529, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Rules" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fnvaa")
+
+[node name="BackGround" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hjojn")
+expand_mode = 1
+
+[node name="FirstRule" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -464.0
+offset_top = -264.0
+offset_right = 464.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4jvjd")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="FirstRule"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -214.0
+offset_top = 12.0
+offset_right = -10.0
+offset_bottom = 86.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_da3nc")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="FirstRule/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -19.0
+offset_right = 83.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.686275, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.00566115, 0.00566115, 0.00566115, 1)
+theme_override_fonts/font = ExtResource("3_yj4fq")
+text = "Protect the base 
+from invasion"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="FirstRule"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -832.0
+offset_top = -212.0
+offset_right = -604.0
+offset_bottom = -138.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_da3nc")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="FirstRule/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -19.0
+offset_right = 83.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.686275, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.00566115, 0.00566115, 0.00566115, 1)
+theme_override_fonts/font = ExtResource("3_yj4fq")
+text = "Get points for every 
+enemy you kill"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecondRule" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -464.0
+offset_top = -264.0
+offset_right = 464.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_i26ot")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="SecondRule"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -353.0
+offset_top = -268.0
+offset_right = -93.0
+offset_bottom = -78.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kouxd")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="SecondRule/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.5
+offset_top = 19.0
+offset_right = 108.5
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.686275, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_yj4fq")
+text = "Shoot at the boxes
+to get ammo
+and replenish health"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CrateBox" parent="SecondRule/Panel" instance=ExtResource("5_7rm4b")]
+position = Vector2(126, 132)
+scale = Vector2(0.7, 0.7)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -22.0
+offset_right = 210.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.686275, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.60933, 0.60933, 0.60933, 1)
+theme_override_fonts/font = ExtResource("3_yj4fq")
+theme_override_font_sizes/font_size = 50
+text = "And have fun"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -264.0
+offset_top = 16.0
+offset_right = -20.0
+offset_bottom = 88.0
+grow_horizontal = 0
+alignment = 1
+
+[node name="Back" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_k4ibf")
+texture_hover = ExtResource("7_yy2e2")
+
+[node name="Forvard" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_j75bp")
+texture_hover = ExtResource("9_fx8a4")
+
+[node name="Menu" type="TextureButton" parent="."]
+layout_mode = 1
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 144.0
+offset_bottom = 88.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("11_g0kk6")
+texture_hover = ExtResource("12_cgimd")
+
+[node name="AudioStreamMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ii4b5")
+bus = &"Music"
+
+[node name="AudioStreamButton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ti1yt")
+bus = &"Sound"
+
+[node name="TransitionLayer" parent="." instance=ExtResource("14_fuh6k")]
+
+[connection signal="pressed" from="HBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="HBoxContainer/Forvard" to="." method="_on_forvard_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]

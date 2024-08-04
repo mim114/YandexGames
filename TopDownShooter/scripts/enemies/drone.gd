@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-#------DATA-----------------------------------------
 
+#------DATA---------------------------------------------------------------------
 const SPEED : int = 400
 
-#------FUNCTIONS CALLED AUTOMATICALLY---------------
 
+#------FUNCTIONS CALLED AUTOMATICALLY-------------------------------------------
 func _process(_delta) -> void:
 	var direction = Vector2.RIGHT
 	velocity = direction * SPEED

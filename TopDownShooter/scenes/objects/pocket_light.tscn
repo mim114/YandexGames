@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://csly4cralnntm"]
+
+[ext_resource type="Texture2D" uid="uid://bihr0oiee37ys" path="res://src/graphics/lights/textures/circle.png" id="1_3oece"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8l8rn"]
+polygon = PackedVector2Array(16, -16, 16, -8, -8, -8, -8, 8, 16, 8, 16, 16, -16, 16, -16, -16)
+
+[node name="PocketLight" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-8, -16, -8, 16, -16, 16, -16, -16)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_8l8rn")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.821789, 0.821789, 0.821789, 1)
+energy = 10.0
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("1_3oece")
+texture_scale = 2.0

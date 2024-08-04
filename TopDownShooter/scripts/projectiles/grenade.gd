@@ -1,11 +1,11 @@
 extends RigidBody2D
 
-#------DATA-----------------------------------------
 
+#------DATA---------------------------------------------------------------------
 const SPEED : int = 750
 
-#------WORK FUNCTIONS-------------------------------
 
+#------WORK FUNCTIONS-----------------------------------------------------------
 func explode() -> void:
 	$Sprite2D.visible = false
 	$LightOccluder2D2.visible = false
@@ -14,7 +14,6 @@ func explode() -> void:
 	$Timer.start()
 
 
-
-
-func _on_timer_timeout():
+#------SIGNALS------------------------------------------------------------------
+func _on_timer_timeout() -> void:
 	$".".queue_free()

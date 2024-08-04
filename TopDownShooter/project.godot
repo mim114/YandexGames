@@ -13,7 +13,7 @@ config_version=5
 config/name="TopDownShooter"
 config/description="A mini-game created to explore the Godot engine."
 config/version="1.0.0"
-run/main_scene="res://scenes/levels/level.tscn"
+run/main_scene="res://scenes/ui/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/image="res://src/screensaver/untitled1.png"
 config/icon="res://src/icon/bullet-bill.svg"
@@ -21,12 +21,15 @@ config/icon="res://src/icon/bullet-bill.svg"
 [autoload]
 
 YandexSDK="*res://addons/yandex_sdk/yandex_sdk.gd"
+Globals="*res://scenes/globals/globals.gd"
+TransitionLayer="*res://scenes/ui/transition_layer.tscn"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://src/graphics/ui/main_cursor.png"
 
 [editor_plugins]
 

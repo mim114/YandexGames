@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://exa2rhin76m4"]
+
+[ext_resource type="PackedScene" uid="uid://dcb8sdp18dp20" path="res://scenes/objects/item_container.tscn" id="1_ux7uu"]
+[ext_resource type="Texture2D" uid="uid://qohs58a76cjj" path="res://src/graphics/objects/toilet.png" id="2_h2tlb"]
+[ext_resource type="Script" path="res://scripts/objects/toilet.gd" id="2_lvgw8"]
+[ext_resource type="Texture2D" uid="uid://dv6h751cxuaq0" path="res://src/graphics/objects/lid.png" id="4_d15hg"]
+
+[node name="Toilet" instance=ExtResource("1_ux7uu")]
+script = ExtResource("2_lvgw8")
+
+[node name="BaseSprite" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h2tlb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+visible = false
+scale = Vector2(0.3, 0.3)
+polygon = PackedVector2Array(95.6, -121.5, 99, -121.5, 113.5, -113.7, 113.5, -112.2, 119.5, -105.5, 119.5, -66.5, 107.4, -53.5, 101.2, -53.5, 97, -54.7, 105.5, -34.9, 105.5, -2.4, 104.3, 7.5, 103, 7.5, 97.1, 33.5, 95.7, 33.5, 79.7, 65.5, 78.5, 65.5, 54.5, 97.5, 53.4, 97.5, 29.3, 119.5, 27, 119.5, 16.5, 125.5, -14.9, 125.5, -37.5, 113.7, -37.5, 112.3, -65.5, 84.3, -65.5, 82.2, -88.5, 51.2, -88.5, 48.9, -101.5, 19.9, -101.5, 15.9, -105.5, -2.3, -105.5, -36.5, -103.9, -36.5, -97.4, -53.5, -99.6, -53.5, -110.5, -54.7, -110.5, -56.7, -119.5, -65.7, -119.5, -104.5, -112.5, -114.5, -110.2, -114.5, -102.2, -120.5, -98.6, -120.5, -96.5, -121, -96.5, -123.6, -93.6, -125.5, 93.5, -125.5)
+
+[node name="LidSprite" parent="." index="2"]
+position = Vector2(0, 19)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_d15hg")

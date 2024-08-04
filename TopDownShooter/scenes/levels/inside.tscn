@@ -1,5 +1,533 @@
-[gd_scene load_steps=2 format=3 uid="uid://bda37xcfh2kas"]
+[gd_scene load_steps=38 format=3 uid="uid://bda37xcfh2kas"]
 
 [ext_resource type="PackedScene" uid="uid://bdcyq5pmnynl0" path="res://scenes/levels/level.tscn" id="1_lpids"]
+[ext_resource type="Texture2D" uid="uid://uuy0ce378x7m" path="res://src/graphics/ground/dirt.png" id="2_62ciy"]
+[ext_resource type="Script" path="res://scripts/levels/inside.gd" id="2_aujck"]
+[ext_resource type="TileSet" uid="uid://bf3njivq35kg2" path="res://src/resources/house.tres" id="2_cblah"]
+[ext_resource type="PackedScene" uid="uid://ce78h5gjy342e" path="res://scenes/objects/crate_box.tscn" id="3_jd4xl"]
+[ext_resource type="AudioStream" uid="uid://cf1xdfnk481b3" path="res://src/music/1 - Astro Reverie.mp3" id="3_n1b3w"]
+[ext_resource type="PackedScene" uid="uid://b83sopki4pb01" path="res://scenes/objects/fan_anim.tscn" id="7_07scn"]
+[ext_resource type="Texture2D" uid="uid://qgact6p26bc2" path="res://src/graphics/decals/blood.png" id="7_fac75"]
+[ext_resource type="PackedScene" uid="uid://dap1if487keqi" path="res://scenes/objects/bed.tscn" id="8_a6w5u"]
+[ext_resource type="Texture2D" uid="uid://na4grulhr2hi" path="res://src/graphics/lights/overlays/hole.png" id="8_buxp6"]
+[ext_resource type="Texture2D" uid="uid://de5syg46r58ru" path="res://src/graphics/lights/overlays/infrastructure.png" id="9_fm7pp"]
+[ext_resource type="Texture2D" uid="uid://bvw7x5j4i2xpe" path="res://src/graphics/decals/ceiling_hole1.png" id="9_x0rpl"]
+[ext_resource type="Texture2D" uid="uid://cnsmj2qifpqud" path="res://src/graphics/lights/overlays/lattice.png" id="10_hah2b"]
+[ext_resource type="Texture2D" uid="uid://dql5s0kyawyfk" path="res://src/graphics/objects/ventilation_surface.png" id="10_j2sv2"]
+[ext_resource type="PackedScene" uid="uid://cehhi3o24kt1h" path="res://scenes/objects/simple_light.tscn" id="11_6odc6"]
+[ext_resource type="Texture2D" uid="uid://b01honjnd6vy4" path="res://src/graphics/decals/brushes/brush050.png" id="11_trmy2"]
+[ext_resource type="PackedScene" uid="uid://b6rhwc36l1mx8" path="res://scenes/objects/wall_light.tscn" id="12_jprvu"]
+[ext_resource type="Texture2D" uid="uid://kj6o17ke2mnt" path="res://src/graphics/decals/brushes/brush055.png" id="12_tnvxo"]
+[ext_resource type="Texture2D" uid="uid://bihr0oiee37ys" path="res://src/graphics/lights/textures/circle.png" id="13_2ee42"]
+[ext_resource type="Texture2D" uid="uid://ccj2c1h6rudbb" path="res://src/graphics/decals/brushes/brush047.png" id="13_f2mfx"]
+[ext_resource type="Texture2D" uid="uid://d1epujmsouijh" path="res://src/graphics/objects/infestation/large.png" id="14_m7tqp"]
+[ext_resource type="PackedScene" uid="uid://cxujqj2yqjwuy" path="res://scenes/objects/item.tscn" id="14_o4y4q"]
+[ext_resource type="Texture2D" uid="uid://pjaofahuu7eh" path="res://src/graphics/decals/brushes/brush046.png" id="14_vgccv"]
+[ext_resource type="Texture2D" uid="uid://do3g1gwrsd4pf" path="res://src/graphics/decals/brushes/brush053.png" id="15_fmdu4"]
+[ext_resource type="Texture2D" uid="uid://dyhogycued26s" path="res://src/graphics/objects/infestation/line.png" id="15_ftiau"]
+[ext_resource type="Texture2D" uid="uid://cirrb5ahsqpao" path="res://src/graphics/decals/brushes/brush054.png" id="16_2ejl7"]
+[ext_resource type="Texture2D" uid="uid://c2p0w7tvl2xg0" path="res://src/graphics/objects/infestation/medium.png" id="16_syy6e"]
+[ext_resource type="Texture2D" uid="uid://m6fhsj8e6kwk" path="res://src/graphics/decals/brushes/brush052.png" id="17_ohoed"]
+[ext_resource type="Texture2D" uid="uid://cgi2v5vik5tfd" path="res://src/graphics/objects/infestation/small.png" id="17_owttu"]
+[ext_resource type="Texture2D" uid="uid://dwpa2a2f7q3vl" path="res://src/graphics/objects/infestation/small_2.png" id="18_amfte"]
+[ext_resource type="Texture2D" uid="uid://du3iqbehu8gfw" path="res://src/graphics/decals/brushes/brush048.png" id="18_tndh2"]
+[ext_resource type="Texture2D" uid="uid://c63qeaegq15tv" path="res://src/graphics/objects/infestation/small_3.png" id="19_bpcqr"]
+[ext_resource type="Texture2D" uid="uid://dera2gpwsg2n7" path="res://src/graphics/decals/brushes/brush045.png" id="19_g5bvp"]
+[ext_resource type="Texture2D" uid="uid://cus0s2trubcgc" path="res://src/graphics/decals/brushes/brush056.png" id="20_2uivb"]
+[ext_resource type="Texture2D" uid="uid://pshy88wh4cbs" path="res://src/graphics/objects/infestation/small_4.png" id="20_3yp1d"]
+[ext_resource type="Texture2D" uid="uid://c2fcvf316cwfm" path="res://src/graphics/objects/infestation/spikes.png" id="21_x88yg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxel2"]
+size = Vector2(237, 170)
 
 [node name="Inside" instance=ExtResource("1_lpids")]
+script = ExtResource("2_aujck")
+
+[node name="FoneMusic" parent="." index="0"]
+stream = ExtResource("3_n1b3w")
+volume_db = -3.0
+
+[node name="ObjectUnder" parent="." index="1"]
+position = Vector2(12416, 8160)
+metadata/_edit_group_ = true
+
+[node name="DownObject" type="Node2D" parent="." index="2"]
+
+[node name="Sprite2D" type="Sprite2D" parent="DownObject" index="0"]
+texture_repeat = 2
+position = Vector2(-2342, 734)
+texture = ExtResource("2_62ciy")
+region_enabled = true
+region_rect = Rect2(-2292.56, -1144.97, 10000, 8000)
+
+[node name="TileMap" type="TileMap" parent="DownObject" index="1"]
+tile_set = ExtResource("2_cblah")
+format = 2
+layer_0/name = "Floor"
+layer_0/tile_data = PackedInt32Array(-65543, 65536, 1, -7, 65536, 1, 65529, 65536, 1, 131065, 65536, 1, -65542, 65536, 1, -6, 65536, 1, 65530, 65536, 1, 131066, 65536, 1, -65541, 65536, 1, -5, 65536, 1, 65531, 65536, 1, 131067, 65536, 1, -65540, 65536, 1, -4, 65536, 1, 65532, 65536, 1, 131068, 65536, 1, -65539, 65536, 1, -3, 65536, 1, 65533, 65536, 1, 131069, 65536, 1, -65538, 65536, 1, -2, 65536, 1, 65534, 65536, 1, 131070, 65536, 1, -65537, 65536, 1, -1, 65536, 1, 65535, 65536, 1, 131071, 65536, 1, -131072, 65536, 1, -65536, 65536, 1, 0, 65536, 1, 65536, 65536, 1, -131071, 65536, 1, -65535, 65536, 1, 1, 65536, 1, 65537, 65536, 1, -327687, 65536, 1, -262151, 65536, 1, -196615, 65536, 1, -131079, 65536, 1, -327686, 65536, 1, -262150, 65536, 1, -196614, 65536, 1, -131078, 65536, 1, -327685, 65536, 1, -262149, 65536, 1, -196613, 65536, 1, -131077, 65536, 1, -327684, 65536, 1, -262148, 65536, 1, -196612, 65536, 1, -131076, 65536, 1, -327683, 65536, 1, -262147, 65536, 1, -196611, 65536, 1, -131075, 65536, 1, -327682, 65536, 1, -262146, 65536, 1, -196610, 65536, 1, -131074, 65536, 1, -65548, 65536, 1, -12, 65536, 1, 65524, 65536, 1, 131060, 65536, 1, 196596, 65536, 1, 262132, 65536, 1, 327668, 65536, 1, 393204, 65536, 1, -65547, 65536, 1, -11, 65536, 1, 65525, 65536, 1, 131061, 65536, 1, 196597, 65536, 1, 262133, 65536, 1, 327669, 65536, 1, 393205, 65536, 1, -65546, 65536, 1, -10, 65536, 1, 65526, 65536, 1, 131062, 65536, 1, 196598, 65536, 1, 262134, 65536, 1, 327670, 65536, 1, 393206, 65536, 1, -65545, 65536, 1, -9, 65536, 1, 65527, 65536, 1, 131063, 65536, 1, 196599, 65536, 1, 262135, 65536, 1, 327671, 65536, 1, 393207, 65536, 1, -65544, 65536, 1, -8, 65536, 1, 65528, 65536, 1, 131064, 65536, 1, 196600, 65536, 1, 262136, 65536, 1, 327672, 65536, 1, 393208, 65536, 1, 458740, 65536, 1, 458741, 65536, 1, 458742, 65536, 1, 458743, 65536, 1, 458744, 65536, 1, 393209, 65536, 1, 458745, 65536, 1, 524281, 65536, 1, 589817, 65536, 1, 655353, 65536, 1, 393210, 65536, 1, 458746, 65536, 1, 524282, 65536, 1, 589818, 65536, 1, 655354, 65536, 1, 393211, 65536, 1, 458747, 65536, 1, 524283, 65536, 1, 589819, 65536, 1, 655355, 65536, 1, 393212, 65536, 1, 458748, 65536, 1, 524284, 65536, 1, 589820, 65536, 1, 655356, 65536, 1, 393213, 65536, 1, 458749, 65536, 1, 524285, 65536, 1, 589821, 65536, 1, 655357, 65536, 1, 327666, 65536, 1, 327667, 65536, 1, 262127, 65536, 1, 327663, 65536, 1, 393199, 65536, 1, 262128, 65536, 1, 327664, 65536, 1, 393200, 65536, 1, 262129, 65536, 1, 327665, 65536, 1, 393201, 65536, 1, -131073, 65536, 1, -196608, 65536, 1, -196607, 65536, 1, -65534, 65536, 3, 2, 131072, 1, 65538, 131072, 1, 131074, 131072, 2, 131073, 65536, 2, 131072, 65536, 2, 196607, 65536, 2, 196606, 65536, 2, 196605, 65536, 2, 196604, 65536, 2, 196603, 65536, 2, 196602, 65536, 2, 196601, 0, 4, 262137, 131072, 1, 327673, 0, 5, 327674, 65536, 0, 327675, 65536, 0, 327676, 65536, 0, 327677, 65536, 0, 327678, 131072, 0, 393214, 131072, 1, 458750, 131072, 1, 524286, 131072, 1, 589822, 131072, 1, 655358, 131072, 1, 720894, 131072, 2, 720893, 65536, 2, 720892, 65536, 2, 720891, 131072, 4, 720890, 65536, 2, 720889, 65536, 2, 720888, 0, 2, 655352, 0, 1, 589816, 0, 1, 524280, 65536, 4, 524279, 65536, 2, 524278, 65536, 2, 524277, 65536, 2, 524276, 65536, 2, 524275, 0, 2, 458739, 0, 1, 393203, 65536, 4, 393202, 0, 4, 458738, 131072, 2, 458737, 65536, 2, 458736, 65536, 2, 458735, 65536, 2, 458734, 0, 2, 393198, 0, 1, 327662, 0, 1, 262126, 0, 1, 196590, 0, 0, 196591, 65536, 0, 196592, 65536, 0, 196593, 65536, 0, 196594, 131072, 0, 262130, 0, 5, 262131, 65536, 5, 196595, 0, 1, 131059, 0, 1, 65523, 0, 1, -13, 0, 1, -65549, 0, 1, -131085, 0, 0, -131084, 65536, 0, -131083, 65536, 0, -131082, 65536, 0, -131081, 65536, 0, -131080, 65536, 5, -196616, 0, 1, -262152, 0, 1, -327688, 0, 1, -393224, 0, 0, -393223, 65536, 0, -393222, 65536, 0, -393221, 65536, 0, -393220, 65536, 0, -393219, 65536, 0, -393218, 65536, 0, -393217, 131072, 0, -327681, 131072, 1, -196609, 0, 5, -262145, 131072, 1, -196606, 131072, 1, -131070, 131072, 1, -262144, 65536, 0, -262143, 65536, 0, -262142, 131072, 0)
+layer_1/name = "OutWall"
+layer_1/tile_data = PackedInt32Array(-65534, 327680, 1, -131070, 327680, 1, -196606, 327680, 1, 2, 327680, 1, 65538, 327680, 1, -262142, 327680, 0, -262143, 262144, 0, -262144, 262144, 0, -196609, 196608, 2, -262145, 196608, 1, -327681, 196608, 1, -393217, 327680, 0, -393218, 262144, 0, -393219, 262144, 0, -393220, 262144, 0, -393221, 262144, 0, -393222, 262144, 0, -393223, 262144, 0, -393224, 196608, 0, -327688, 196608, 1, -262152, 196608, 1, -196616, 327680, 1, -131080, 327680, 2, -131081, 262144, 2, -131082, 262144, 2, -131083, 262144, 2, -131084, 262144, 2, -131085, 196608, 0, -65549, 196608, 1, -13, 196608, 1, 65523, 196608, 1, 131059, 196608, 1, 196595, 196608, 1, 262131, 327680, 2, 262130, 196608, 2, 196594, 327680, 0, 196593, 262144, 0, 196592, 262144, 0, 196591, 262144, 0, 196590, 196608, 0, 262126, 196608, 1, 327662, 196608, 1, 393198, 196608, 1, 458734, 196608, 2, 458735, 262144, 2, 458736, 262144, 2, 458737, 262144, 2, 458738, 327680, 2, 393202, 196608, 0, 393203, 327680, 0, 458739, 327680, 1, 524275, 196608, 2, 524276, 262144, 2, 524277, 262144, 2, 524278, 262144, 2, 524279, 262144, 2, 524280, 327680, 0, 589816, 327680, 1, 655352, 327680, 1, 720888, 196608, 2, 720889, 262144, 2, 720890, 262144, 2, 720891, 393216, 1342177282, 720892, 262144, 2, 720893, 262144, 2, 720894, 327680, 2, 655358, 327680, 1, 589822, 327680, 1, 524286, 327680, 1, 458750, 327680, 1, 393214, 327680, 1, 327678, 327680, 0, 327677, 262144, 0, 327676, 262144, 0, 327675, 262144, 0, 327674, 262144, 0, 327673, 196608, 2, 262137, 196608, 1, 196601, 196608, 0, 196602, 262144, 0, 196603, 262144, 0, 196604, 262144, 0, 196605, 262144, 0, 196606, 262144, 0, 196607, 262144, 0, 131072, 262144, 0, 131073, 262144, 0, 131074, 327680, 2)
+layer_2/name = "InnerWall"
+layer_2/tile_data = PackedInt32Array(-262145, 393216, 7, -262146, 0, 6, -262148, 0, 6, -262149, 0, 6, -262150, 0, 7, -196614, 65536, 8, -196615, 0, 6, -196616, 262144, 7, 196599, 65536, 8, 196598, 0, 6, 196597, 0, 6, 196596, 0, 6, 196595, 262144, 7, 131063, 65536, 6, -9, 65536, 6, -65545, 65536, 6, -131081, 327680, 6, 2, 393216, 7, 1, 0, 6, 0, 0, 6, 65534, 0, 6, 65533, 0, 6, 65532, 0, 6, 65531, 0, 6, 65530, 0, 7, 131066, 65536, 6, 196602, 327680, 8, 393205, 0, 6, 393206, 0, 6, 393207, 131072, 7, 524279, 327680, 8, 327674, 327680, 6, 393209, 0, 6, 393210, 65536, 8, 458739, 262144, 7, 458740, 65536, 8, 393204, 0, 7)
+
+[node name="CrateBox" parent="DownObject" index="2" instance=ExtResource("3_jd4xl")]
+position = Vector2(-3855, 2789)
+rotation = 3.14159
+
+[node name="CrateBox2" parent="DownObject" index="3" instance=ExtResource("3_jd4xl")]
+position = Vector2(-2506, -1442)
+rotation = 3.14159
+
+[node name="CrateBox3" parent="DownObject" index="4" instance=ExtResource("3_jd4xl")]
+position = Vector2(-1833, 844)
+rotation = 3.14159
+
+[node name="CrateBox4" parent="DownObject" index="5" instance=ExtResource("3_jd4xl")]
+position = Vector2(-4736, 12)
+rotation = -1.5708
+
+[node name="Blood" type="Sprite2D" parent="DownObject" index="6"]
+modulate = Color(0.60933, 0.60933, 0.60933, 1)
+position = Vector2(-3664, -662)
+rotation = -1.5708
+texture = ExtResource("7_fac75")
+
+[node name="Bed" parent="DownObject" index="7" instance=ExtResource("8_a6w5u")]
+position = Vector2(-3510, 855)
+
+[node name="Bed2" parent="DownObject" index="8" instance=ExtResource("8_a6w5u")]
+position = Vector2(-4235, 855)
+
+[node name="Bed4" parent="DownObject" index="9" instance=ExtResource("8_a6w5u")]
+position = Vector2(-4596, 855)
+
+[node name="Bed3" parent="DownObject" index="10" instance=ExtResource("8_a6w5u")]
+position = Vector2(-3897, 855)
+
+[node name="Bed5" parent="DownObject" index="11" instance=ExtResource("8_a6w5u")]
+position = Vector2(-522, -2300)
+rotation = -1.5708
+
+[node name="Bed6" parent="DownObject" index="12" instance=ExtResource("8_a6w5u")]
+position = Vector2(-872, -2296)
+rotation = -1.5708
+
+[node name="Bed7" parent="DownObject" index="13" instance=ExtResource("8_a6w5u")]
+position = Vector2(-1247, -2296)
+rotation = -1.5708
+
+[node name="Bed8" parent="DownObject" index="14" instance=ExtResource("8_a6w5u")]
+position = Vector2(-1596, -2297)
+rotation = -1.5708
+
+[node name="Bed9" parent="DownObject" index="15" instance=ExtResource("8_a6w5u")]
+position = Vector2(-1972, -2303)
+rotation = -1.5708
+
+[node name="Bed10" parent="DownObject" index="16" instance=ExtResource("8_a6w5u")]
+position = Vector2(-2322, -2293)
+rotation = -1.5708
+
+[node name="Bed11" parent="DownObject" index="17" instance=ExtResource("8_a6w5u")]
+position = Vector2(-2656, -2289)
+rotation = -1.5708
+
+[node name="CeilingHole1" type="Sprite2D" parent="DownObject" index="18"]
+modulate = Color(1, 1, 1, 0.65098)
+position = Vector2(-218, -1154)
+texture = ExtResource("9_x0rpl")
+
+[node name="Sprite2D2" type="Sprite2D" parent="DownObject" index="19"]
+modulate = Color(0.585062, 0.585062, 0.585062, 1)
+position = Vector2(-4676, 1106)
+texture = ExtResource("10_j2sv2")
+
+[node name="Blood2" type="Sprite2D" parent="DownObject" index="20"]
+modulate = Color(0.687215, 0.687215, 0.687215, 1)
+position = Vector2(-5652, 2160)
+rotation = -0.44855
+texture = ExtResource("7_fac75")
+
+[node name="Brush050" type="Sprite2D" parent="DownObject" index="21"]
+modulate = Color(1, 1, 0.537255, 0.211765)
+position = Vector2(-1869, 2586)
+scale = Vector2(1.42617, 1)
+texture = ExtResource("11_trmy2")
+
+[node name="Brush055" type="Sprite2D" parent="DownObject" index="22"]
+self_modulate = Color(1, 1, 0.290196, 0.301961)
+position = Vector2(-2623, -420)
+scale = Vector2(1.19318, 1.67073)
+texture = ExtResource("12_tnvxo")
+
+[node name="Brush047" type="Sprite2D" parent="DownObject" index="23"]
+modulate = Color(1, 1, 0.231373, 0.113725)
+position = Vector2(-1743, -1217)
+texture = ExtResource("13_f2mfx")
+
+[node name="InfestatPyatno" type="Node2D" parent="DownObject" index="24"]
+
+[node name="Brush046" type="Sprite2D" parent="DownObject/InfestatPyatno" index="0"]
+modulate = Color(0.262745, 0.8, 0.211765, 0.266667)
+position = Vector2(-3468, -261)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_vgccv")
+
+[node name="Brush053" type="Sprite2D" parent="DownObject/InfestatPyatno" index="1"]
+modulate = Color(0.262745, 0.8, 0.211765, 0.266667)
+position = Vector2(-3444, -456)
+texture = ExtResource("15_fmdu4")
+
+[node name="Brush054" type="Sprite2D" parent="DownObject/InfestatPyatno" index="2"]
+modulate = Color(0.262745, 0.8, 0.211765, 0.266667)
+position = Vector2(-4559, -678)
+texture = ExtResource("16_2ejl7")
+
+[node name="Brush055" type="Sprite2D" parent="DownObject/InfestatPyatno" index="3"]
+modulate = Color(0.262745, 0.8, 0.211765, 0.266667)
+position = Vector2(-4285, -739)
+texture = ExtResource("12_tnvxo")
+
+[node name="Brush052" type="Sprite2D" parent="DownObject/InfestatPyatno" index="4"]
+modulate = Color(0.262745, 0.8, 0.211765, 0.266667)
+position = Vector2(-5507, 1177)
+texture = ExtResource("17_ohoed")
+
+[node name="Brush048" type="Sprite2D" parent="DownObject/InfestatPyatno" index="5"]
+modulate = Color(0.262745, 0.8, 0.211765, 0.266667)
+position = Vector2(-6492, 1249)
+texture = ExtResource("18_tndh2")
+
+[node name="Brush047" type="Sprite2D" parent="DownObject/InfestatPyatno" index="6"]
+modulate = Color(0.262745, 0.8, 0.211765, 0.266667)
+position = Vector2(-6112, 1201)
+scale = Vector2(1, 0.24581)
+texture = ExtResource("13_f2mfx")
+
+[node name="Brush049" type="Sprite2D" parent="DownObject/InfestatPyatno" index="7"]
+modulate = Color(0.262745, 0.8, 0.211765, 0.266667)
+position = Vector2(-6353, 2207)
+scale = Vector2(1, 0.55131)
+texture = ExtResource("14_vgccv")
+
+[node name="Brush045" type="Sprite2D" parent="DownObject/InfestatPyatno" index="8"]
+modulate = Color(0.262745, 0.8, 0.211765, 0.266667)
+position = Vector2(118, -765)
+scale = Vector2(0.533113, 0.5)
+texture = ExtResource("19_g5bvp")
+
+[node name="Brush056" type="Sprite2D" parent="DownObject/InfestatPyatno" index="9"]
+modulate = Color(0.262745, 0.8, 0.211765, 0.266667)
+position = Vector2(754, -1059)
+texture = ExtResource("20_2uivb")
+
+[node name="Brush057" type="Sprite2D" parent="DownObject/InfestatPyatno" index="10"]
+modulate = Color(0.262745, 0.8, 0.211765, 0.266667)
+position = Vector2(446, -1197.5)
+scale = Vector2(1, 0.722561)
+texture = ExtResource("12_tnvxo")
+
+[node name="Infestation" type="StaticBody2D" parent="DownObject" index="25"]
+collision_layer = 4
+collision_mask = 3
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Large" type="Sprite2D" parent="DownObject/Infestation" index="0"]
+position = Vector2(-4586, -704)
+texture = ExtResource("14_m7tqp")
+
+[node name="Line" type="Sprite2D" parent="DownObject/Infestation" index="1"]
+position = Vector2(-4243, -697)
+texture = ExtResource("15_ftiau")
+
+[node name="Medium" type="Sprite2D" parent="DownObject/Infestation" index="2"]
+position = Vector2(-4371, -812)
+texture = ExtResource("16_syy6e")
+
+[node name="Small" type="Sprite2D" parent="DownObject/Infestation" index="3"]
+position = Vector2(-4398, -691)
+texture = ExtResource("17_owttu")
+
+[node name="Small2" type="Sprite2D" parent="DownObject/Infestation" index="4"]
+position = Vector2(-3400, -131)
+texture = ExtResource("18_amfte")
+
+[node name="Small3" type="Sprite2D" parent="DownObject/Infestation" index="5"]
+position = Vector2(-3463, -277)
+texture = ExtResource("19_bpcqr")
+
+[node name="Small4" type="Sprite2D" parent="DownObject/Infestation" index="6"]
+position = Vector2(-3379, -499)
+texture = ExtResource("20_3yp1d")
+
+[node name="Spikes" type="Sprite2D" parent="DownObject/Infestation" index="7"]
+position = Vector2(-3385, -310)
+texture = ExtResource("21_x88yg")
+
+[node name="Large2" type="Sprite2D" parent="DownObject/Infestation" index="8"]
+position = Vector2(-6625, 1166)
+texture = ExtResource("14_m7tqp")
+
+[node name="Large3" type="Sprite2D" parent="DownObject/Infestation" index="9"]
+position = Vector2(-6222, 1156)
+texture = ExtResource("14_m7tqp")
+
+[node name="Small5" type="Sprite2D" parent="DownObject/Infestation" index="10"]
+position = Vector2(-6467, 1126)
+texture = ExtResource("18_amfte")
+
+[node name="Small6" type="Sprite2D" parent="DownObject/Infestation" index="11"]
+position = Vector2(-6501, 1210)
+texture = ExtResource("18_amfte")
+
+[node name="Spikes2" type="Sprite2D" parent="DownObject/Infestation" index="12"]
+position = Vector2(-5478, 1136)
+texture = ExtResource("21_x88yg")
+
+[node name="Small7" type="Sprite2D" parent="DownObject/Infestation" index="13"]
+position = Vector2(-6652, 2346)
+texture = ExtResource("20_3yp1d")
+
+[node name="Spikes3" type="Sprite2D" parent="DownObject/Infestation" index="14"]
+position = Vector2(-6430, 2340)
+texture = ExtResource("21_x88yg")
+
+[node name="Small8" type="Sprite2D" parent="DownObject/Infestation" index="15"]
+position = Vector2(-6319, 2390)
+texture = ExtResource("19_bpcqr")
+
+[node name="Large4" type="Sprite2D" parent="DownObject/Infestation" index="16"]
+position = Vector2(-6669, 2209)
+texture = ExtResource("14_m7tqp")
+
+[node name="Large5" type="Sprite2D" parent="DownObject/Infestation" index="17"]
+position = Vector2(764, -1200)
+texture = ExtResource("14_m7tqp")
+
+[node name="Line2" type="Sprite2D" parent="DownObject/Infestation" index="18"]
+position = Vector2(869, -945)
+texture = ExtResource("15_ftiau")
+
+[node name="Small9" type="Sprite2D" parent="DownObject/Infestation" index="19"]
+position = Vector2(794, -1047)
+texture = ExtResource("17_owttu")
+
+[node name="Small10" type="Sprite2D" parent="DownObject/Infestation" index="20"]
+position = Vector2(596, -1233)
+texture = ExtResource("19_bpcqr")
+
+[node name="Small11" type="Sprite2D" parent="DownObject/Infestation" index="21"]
+position = Vector2(493, -1225)
+texture = ExtResource("17_owttu")
+
+[node name="Small12" type="Sprite2D" parent="DownObject/Infestation" index="22"]
+position = Vector2(343, -1247)
+texture = ExtResource("19_bpcqr")
+
+[node name="Spikes4" type="Sprite2D" parent="DownObject/Infestation" index="23"]
+position = Vector2(629, -1157)
+texture = ExtResource("21_x88yg")
+
+[node name="Small13" type="Sprite2D" parent="DownObject/Infestation" index="24"]
+position = Vector2(94, -831)
+texture = ExtResource("18_amfte")
+
+[node name="Large6" type="Sprite2D" parent="DownObject/Infestation" index="25"]
+position = Vector2(162, -731)
+texture = ExtResource("14_m7tqp")
+
+[node name="Small14" type="Sprite2D" parent="DownObject/Infestation" index="26"]
+position = Vector2(26, -739)
+texture = ExtResource("17_owttu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DownObject/Infestation" index="27"]
+position = Vector2(-4586, -704)
+polygon = PackedVector2Array(27, -71.7, 47, -61.7, 47, -60.4, 58, -50.4, 58, -48.1, 68, -33.1, 68, -30, 69, -28, 69, -2.3, 67, 3.8, 67, 30.5, 65.3, 30.5, 53.2, 52.5, 51.9, 52.5, 36.8, 66.5, 34.4, 66.5, 19.4, 72.5, -16, 72.5, -47, 59.8, -47, 58.3, -69, 35.3, -69, -14.7, -63, -24.1, -63, -29.8, -59.4, -40.5, -58, -40.5, -47.1, -56.5, -45.9, -56.5, -30.8, -70.5, -28.3, -70.5, -22.2, -72.5, 27, -72.5)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="DownObject/Infestation" index="28"]
+position = Vector2(-4243, -697)
+polygon = PackedVector2Array(24, -167.5, 24, -142.5, 23.3, -142.5, 19, -133.2, 23, -128.2, 23, -123.8, 24, -117.9, 24, -115.5, 22.2, -115.5, 17.8, -105.8, 21, -90.7, 21, -88.4, 18, -62.3, 18, -57.5, 22, -42.8, 22, -34.4, 20.2, -15.5, 24, -4.8, 24, 33.7, 20, 41, 20, 107.5, 18.4, 107.5, 13, 121.9, 13, 123.2, 23, 154.2, 23, 156.8, 18.5, 172.5, 17.1, 172.5, 12.4, 179.5, -12.2, 179.5, -18, 175.6, -18, 173, -24, 164.5, -24, 126, -23.5, 123.5, -24, 121.9, -24, 86.8, -23.5, 84.5, -24, 82.5, -24, 56.3, -21.3, 40.2, -24, 34.9, -24, -0.5, -22.2, -17.5, -24, -22.5, -24, -53.3, -23.3, -58.5, -24, -60.6, -24, -92.5, -20.4, -104.1, -24, -108.4, -24, -170.7, -20.2, -177.5, -17.1, -177.5, -9, -179.5, 16, -179.5)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="DownObject/Infestation" index="29"]
+position = Vector2(-4371, -812)
+polygon = PackedVector2Array(33.5, -31.4, 33.5, -29.7, 39.5, -21.4, 39.5, 5.7, 31.8, 24, 30.2, 24, 16.2, 35, 12.9, 35, 8.4, 37, -16.2, 37, -32.5, 30.3, -32.5, 28.5, -39.5, 18.5, -39.5, -11.2, -38.9, -13, -37.5, -13, -20.5, -34, -14.9, -34, -7.5, -37, 19.5, -37)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="DownObject/Infestation" index="30"]
+position = Vector2(-4398, -691)
+polygon = PackedVector2Array(16.5, -49.1, 16.5, -46.5, 21.5, -38.2, 21.5, -4.8, 19.5, 4.4, 19.5, 9, 21.5, 26.3, 21.5, 28, 19.9, 28, 10.8, 50, 9.3, 50, 7.3, 52, -12.5, 52, -19.5, 47, -19.5, 44.7, -21.5, 42.2, -21.5, -24, -18.2, -43, -16.5, -43, -9.5, -51.7, 11.7, -52)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="DownObject/Infestation" index="31"]
+position = Vector2(-3400, -131)
+polygon = PackedVector2Array(21, -25, 21, -22.6, 24, -17.8, 24, 13.1, 20.4, 23, 18.8, 23, 9.8, 32, -11.2, 32, -20, 25, -20, 22.5, -24, 15.9, -24, -12.8, -21.5, -22, -19.7, -22, -7, -32, 12, -32)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="DownObject/Infestation" index="32"]
+position = Vector2(-3463, -277)
+polygon = PackedVector2Array(16, -22.4, 16, -19.9, 21, -6.3, 21, 23.5, 16, 30.5, 13.4, 30.5, 8.9, 32.5, -11.8, 32.5, -20, 24.3, -20, 21.5, -21, 8.4, -21, -21.2, -18.3, -27.5, -16.7, -27.5, -10, -32.5, 5, -32.5)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="DownObject/Infestation" index="33"]
+position = Vector2(-3379, -499)
+polygon = PackedVector2Array(17, -17.8, 17, -16.2, 23, -9.5, 23, 9.6, 20.4, 16.5, 18.8, 16.5, 14.8, 20.5, -14.4, 20.5, -16, 19.7, -16, 18.3, -23, 11.3, -23, -9.5, -11, -20.4, 10.7, -20.5)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="DownObject/Infestation" index="34"]
+position = Vector2(-3385, -310)
+polygon = PackedVector2Array(38, -45.6, 38, -32.3, 42.5, -17, 52, -13.2, 52, -3.6, 47, 0, 47, 7.5, 32.2, 37, 27.1, 37, 6.2, 42, -2.2, 42, -12.4, 40.3, -22.1, 46, -37, 46, -37, 42.8, -33.4, 24.7, -41.3, 6, -44.6, 6, -52, 1.4, -52, -8, -43, -13.1, -43, -18.6, -32, -34, -29.5, -34, -24, -37.1, -24, -38.6, -19.1, -46, -14.6, -46, -9.5, -43.8, 3, -46, 11, -46, 18.4, -43.5, 24.3, -46, 36.2, -46)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="DownObject/Infestation" index="35"]
+position = Vector2(-6625, 1166)
+polygon = PackedVector2Array(27, -71.7, 47, -61.7, 47, -60.4, 58, -50.4, 58, -48.1, 68, -33.1, 68, -30, 69, -28, 69, -2.3, 67, 3.8, 67, 30.5, 65.3, 30.5, 53.2, 52.5, 51.9, 52.5, 36.8, 66.5, 34.4, 66.5, 19.4, 72.5, -16, 72.5, -47, 59.8, -47, 58.3, -69, 35.3, -69, -14.7, -63, -24.1, -63, -29.8, -59.4, -40.5, -58, -40.5, -47.1, -56.5, -45.9, -56.5, -30.8, -70.5, -28.3, -70.5, -22.2, -72.5, 27, -72.5)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="DownObject/Infestation" index="36"]
+position = Vector2(-6222, 1156)
+polygon = PackedVector2Array(27, -71.7, 47, -61.7, 47, -60.4, 58, -50.4, 58, -48.1, 68, -33.1, 68, -30, 69, -28, 69, -2.3, 67, 3.8, 67, 30.5, 65.3, 30.5, 53.2, 52.5, 51.9, 52.5, 36.8, 66.5, 34.4, 66.5, 19.4, 72.5, -16, 72.5, -47, 59.8, -47, 58.3, -69, 35.3, -69, -14.7, -63, -24.1, -63, -29.8, -59.4, -40.5, -58, -40.5, -47.1, -56.5, -45.9, -56.5, -30.8, -70.5, -28.3, -70.5, -22.2, -72.5, 27, -72.5)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="DownObject/Infestation" index="37"]
+position = Vector2(-6467, 1126)
+polygon = PackedVector2Array(21, -25, 21, -22.6, 24, -17.8, 24, 13.1, 20.4, 23, 18.8, 23, 9.8, 32, -11.2, 32, -20, 25, -20, 22.5, -24, 15.9, -24, -12.8, -21.5, -22, -19.7, -22, -7, -32, 12, -32)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="DownObject/Infestation" index="38"]
+position = Vector2(-6501, 1210)
+polygon = PackedVector2Array(21, -25, 21, -22.6, 24, -17.8, 24, 13.1, 20.4, 23, 18.8, 23, 9.8, 32, -11.2, 32, -20, 25, -20, 22.5, -24, 15.9, -24, -12.8, -21.5, -22, -19.7, -22, -7, -32, 12, -32)
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="DownObject/Infestation" index="39"]
+position = Vector2(-5478, 1136)
+polygon = PackedVector2Array(38, -45.6, 38, -32.3, 42.5, -17, 52, -13.2, 52, -3.6, 47, 0, 47, 7.5, 32.2, 37, 27.1, 37, 6.2, 42, -2.2, 42, -12.4, 40.3, -22.1, 46, -37, 46, -37, 42.8, -33.4, 24.7, -41.3, 6, -44.6, 6, -52, 1.4, -52, -8, -43, -13.1, -43, -18.6, -32, -34, -29.5, -34, -24, -37.1, -24, -38.6, -19.1, -46, -14.6, -46, -9.5, -43.8, 3, -46, 11, -46, 18.4, -43.5, 24.3, -46, 36.2, -46)
+
+[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="DownObject/Infestation" index="40"]
+position = Vector2(-6652, 2346)
+polygon = PackedVector2Array(17, -17.8, 17, -16.2, 23, -9.5, 23, 9.6, 20.4, 16.5, 18.8, 16.5, 14.8, 20.5, -14.4, 20.5, -16, 19.7, -16, 18.3, -23, 11.3, -23, -9.5, -11, -20.4, 10.7, -20.5)
+
+[node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="DownObject/Infestation" index="41"]
+position = Vector2(-6430, 2340)
+polygon = PackedVector2Array(38, -45.6, 38, -32.3, 42.5, -17, 52, -13.2, 52, -3.6, 47, 0, 47, 7.5, 32.2, 37, 27.1, 37, 6.2, 42, -2.2, 42, -12.4, 40.3, -22.1, 46, -37, 46, -37, 42.8, -33.4, 24.7, -41.3, 6, -44.6, 6, -52, 1.4, -52, -8, -43, -13.1, -43, -18.6, -32, -34, -29.5, -34, -24, -37.1, -24, -38.6, -19.1, -46, -14.6, -46, -9.5, -43.8, 3, -46, 11, -46, 18.4, -43.5, 24.3, -46, 36.2, -46)
+
+[node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="DownObject/Infestation" index="42"]
+position = Vector2(-6319, 2390)
+polygon = PackedVector2Array(16, -22.4, 16, -19.9, 21, -6.3, 21, 23.5, 16, 30.5, 13.4, 30.5, 8.9, 32.5, -11.8, 32.5, -20, 24.3, -20, 21.5, -21, 8.4, -21, -21.2, -18.3, -27.5, -16.7, -27.5, -10, -32.5, 5, -32.5)
+
+[node name="CollisionPolygon2D17" type="CollisionPolygon2D" parent="DownObject/Infestation" index="43"]
+position = Vector2(-6669, 2209)
+polygon = PackedVector2Array(27, -71.7, 47, -61.7, 47, -60.4, 58, -50.4, 58, -48.1, 68, -33.1, 68, -30, 69, -28, 69, -2.3, 67, 3.8, 67, 30.5, 65.3, 30.5, 53.2, 52.5, 51.9, 52.5, 36.8, 66.5, 34.4, 66.5, 19.4, 72.5, -16, 72.5, -47, 59.8, -47, 58.3, -69, 35.3, -69, -14.7, -63, -24.1, -63, -29.8, -59.4, -40.5, -58, -40.5, -47.1, -56.5, -45.9, -56.5, -30.8, -70.5, -28.3, -70.5, -22.2, -72.5, 27, -72.5)
+
+[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="DownObject/Infestation" index="44"]
+position = Vector2(764, -1200)
+polygon = PackedVector2Array(27, -71.7, 47, -61.7, 47, -60.4, 58, -50.4, 58, -48.1, 68, -33.1, 68, -30, 69, -28, 69, -2.3, 67, 3.8, 67, 30.5, 65.3, 30.5, 53.2, 52.5, 51.9, 52.5, 36.8, 66.5, 34.4, 66.5, 19.4, 72.5, -16, 72.5, -47, 59.8, -47, 58.3, -69, 35.3, -69, -14.7, -63, -24.1, -63, -29.8, -59.4, -40.5, -58, -40.5, -47.1, -56.5, -45.9, -56.5, -30.8, -70.5, -28.3, -70.5, -22.2, -72.5, 27, -72.5)
+
+[node name="CollisionPolygon2D19" type="CollisionPolygon2D" parent="DownObject/Infestation" index="45"]
+position = Vector2(869, -945)
+polygon = PackedVector2Array(24, -167.5, 24, -142.5, 23.3, -142.5, 19, -133.2, 23, -128.2, 23, -123.8, 24, -117.9, 24, -115.5, 22.2, -115.5, 17.8, -105.8, 21, -90.7, 21, -88.4, 18, -62.3, 18, -57.5, 22, -42.8, 22, -34.4, 20.2, -15.5, 24, -4.8, 24, 33.7, 20, 41, 20, 107.5, 18.4, 107.5, 13, 121.9, 13, 123.2, 23, 154.2, 23, 156.8, 18.5, 172.5, 17.1, 172.5, 12.4, 179.5, -12.2, 179.5, -18, 175.6, -18, 173, -24, 164.5, -24, 126, -23.5, 123.5, -24, 121.9, -24, 86.8, -23.5, 84.5, -24, 82.5, -24, 56.3, -21.3, 40.2, -24, 34.9, -24, -0.5, -22.2, -17.5, -24, -22.5, -24, -53.3, -23.3, -58.5, -24, -60.6, -24, -92.5, -20.4, -104.1, -24, -108.4, -24, -170.7, -20.2, -177.5, -17.1, -177.5, -9, -179.5, 16, -179.5)
+
+[node name="CollisionPolygon2D20" type="CollisionPolygon2D" parent="DownObject/Infestation" index="46"]
+position = Vector2(794, -1047)
+polygon = PackedVector2Array(16.5, -49.1, 16.5, -46.5, 21.5, -38.2, 21.5, -4.8, 19.5, 4.4, 19.5, 9, 21.5, 26.3, 21.5, 28, 19.9, 28, 10.8, 50, 9.3, 50, 7.3, 52, -12.5, 52, -19.5, 47, -19.5, 44.7, -21.5, 42.2, -21.5, -24, -18.2, -43, -16.5, -43, -9.5, -51.7, 11.7, -52)
+
+[node name="CollisionPolygon2D21" type="CollisionPolygon2D" parent="DownObject/Infestation" index="47"]
+position = Vector2(596, -1233)
+polygon = PackedVector2Array(16, -22.4, 16, -19.9, 21, -6.3, 21, 23.5, 16, 30.5, 13.4, 30.5, 8.9, 32.5, -11.8, 32.5, -20, 24.3, -20, 21.5, -21, 8.4, -21, -21.2, -18.3, -27.5, -16.7, -27.5, -10, -32.5, 5, -32.5)
+
+[node name="CollisionPolygon2D22" type="CollisionPolygon2D" parent="DownObject/Infestation" index="48"]
+position = Vector2(493, -1225)
+polygon = PackedVector2Array(16.5, -49.1, 16.5, -46.5, 21.5, -38.2, 21.5, -4.8, 19.5, 4.4, 19.5, 9, 21.5, 26.3, 21.5, 28, 19.9, 28, 10.8, 50, 9.3, 50, 7.3, 52, -12.5, 52, -19.5, 47, -19.5, 44.7, -21.5, 42.2, -21.5, -24, -18.2, -43, -16.5, -43, -9.5, -51.7, 11.7, -52)
+
+[node name="CollisionPolygon2D23" type="CollisionPolygon2D" parent="DownObject/Infestation" index="49"]
+position = Vector2(343, -1247)
+polygon = PackedVector2Array(16, -22.4, 16, -19.9, 21, -6.3, 21, 23.5, 16, 30.5, 13.4, 30.5, 8.9, 32.5, -11.8, 32.5, -20, 24.3, -20, 21.5, -21, 8.4, -21, -21.2, -18.3, -27.5, -16.7, -27.5, -10, -32.5, 5, -32.5)
+
+[node name="CollisionPolygon2D24" type="CollisionPolygon2D" parent="DownObject/Infestation" index="50"]
+position = Vector2(629, -1157)
+polygon = PackedVector2Array(38, -45.6, 38, -32.3, 42.5, -17, 52, -13.2, 52, -3.6, 47, 0, 47, 7.5, 32.2, 37, 27.1, 37, 6.2, 42, -2.2, 42, -12.4, 40.3, -22.1, 46, -37, 46, -37, 42.8, -33.4, 24.7, -41.3, 6, -44.6, 6, -52, 1.4, -52, -8, -43, -13.1, -43, -18.6, -32, -34, -29.5, -34, -24, -37.1, -24, -38.6, -19.1, -46, -14.6, -46, -9.5, -43.8, 3, -46, 11, -46, 18.4, -43.5, 24.3, -46, 36.2, -46)
+
+[node name="CollisionPolygon2D25" type="CollisionPolygon2D" parent="DownObject/Infestation" index="51"]
+position = Vector2(94, -831)
+polygon = PackedVector2Array(21, -25, 21, -22.6, 24, -17.8, 24, 13.1, 20.4, 23, 18.8, 23, 9.8, 32, -11.2, 32, -20, 25, -20, 22.5, -24, 15.9, -24, -12.8, -21.5, -22, -19.7, -22, -7, -32, 12, -32)
+
+[node name="CollisionPolygon2D26" type="CollisionPolygon2D" parent="DownObject/Infestation" index="52"]
+position = Vector2(162, -731)
+polygon = PackedVector2Array(27, -71.7, 47, -61.7, 47, -60.4, 58, -50.4, 58, -48.1, 68, -33.1, 68, -30, 69, -28, 69, -2.3, 67, 3.8, 67, 30.5, 65.3, 30.5, 53.2, 52.5, 51.9, 52.5, 36.8, 66.5, 34.4, 66.5, 19.4, 72.5, -16, 72.5, -47, 59.8, -47, 58.3, -69, 35.3, -69, -14.7, -63, -24.1, -63, -29.8, -59.4, -40.5, -58, -40.5, -47.1, -56.5, -45.9, -56.5, -30.8, -70.5, -28.3, -70.5, -22.2, -72.5, 27, -72.5)
+
+[node name="CollisionPolygon2D27" type="CollisionPolygon2D" parent="DownObject/Infestation" index="53"]
+position = Vector2(26, -739)
+polygon = PackedVector2Array(16.5, -49.1, 16.5, -46.5, 21.5, -38.2, 21.5, -4.8, 19.5, 4.4, 19.5, 9, 21.5, 26.3, 21.5, 28, 19.9, 28, 10.8, 50, 9.3, 50, 7.3, 52, -12.5, 52, -19.5, 47, -19.5, 44.7, -21.5, 42.2, -21.5, -24, -18.2, -43, -16.5, -43, -9.5, -51.7, 11.7, -52)
+
+[node name="FanAnim" parent="Lights" index="0" instance=ExtResource("7_07scn")]
+position = Vector2(-1722, 3448)
+
+[node name="FanAnim2" parent="Lights" index="1" instance=ExtResource("7_07scn")]
+position = Vector2(-6064, 1747)
+
+[node name="FanAnim3" parent="Lights" index="2" instance=ExtResource("7_07scn")]
+position = Vector2(-1122, -798)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights" index="3"]
+modulate = Color(1, 1, 1, 0.188235)
+position = Vector2(-4060, 73)
+scale = Vector2(3, 3)
+texture = ExtResource("8_buxp6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Lights" index="4"]
+modulate = Color(1, 1, 1, 0.341176)
+position = Vector2(-1514, -2022)
+rotation = 1.5708
+scale = Vector2(1, 4.07905)
+texture = ExtResource("9_fm7pp")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Lights" index="5"]
+modulate = Color(1, 1, 1, 0.54902)
+position = Vector2(723, 583)
+rotation = 1.5708
+texture = ExtResource("10_hah2b")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Lights" index="6"]
+modulate = Color(1, 1, 1, 0.54902)
+position = Vector2(-4565, 2707)
+texture = ExtResource("10_hah2b")
+
+[node name="Lamp" type="Node2D" parent="." index="4"]
+
+[node name="SimpleLight" parent="Lamp" index="0" instance=ExtResource("11_6odc6")]
+position = Vector2(-1223, 229)
+
+[node name="SimpleLight2" parent="Lamp" index="1" instance=ExtResource("11_6odc6")]
+position = Vector2(887, -473)
+rotation = 1.5708
+
+[node name="SimpleLight3" parent="Lamp" index="2" instance=ExtResource("11_6odc6")]
+position = Vector2(-3897, 2179)
+
+[node name="WallLight" parent="Lamp" index="3" instance=ExtResource("12_jprvu")]
+position = Vector2(-692, 2377)
+rotation = -1.5708
+
+[node name="WallLight2" parent="Lamp" index="4" instance=ExtResource("12_jprvu")]
+position = Vector2(-689, 3345)
+rotation = -1.5708
+
+[node name="WallLight3" parent="Lamp" index="5" instance=ExtResource("12_jprvu")]
+position = Vector2(-3948, 1029)
+rotation = 3.14159
+
+[node name="Exit" type="Area2D" parent="." index="6"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" index="0"]
+position = Vector2(-1745, 4182)
+shape = SubResource("RectangleShape2D_kxel2")
+
+[node name="Player" parent="." index="8"]
+position = Vector2(-1737, 3968)
+rotation = -1.5708
+
+[node name="PointLight2D" type="PointLight2D" parent="Player" index="9"]
+texture = ExtResource("13_2ee42")
+
+[node name="Item" parent="." index="10" instance=ExtResource("14_o4y4q")]
+modulate = Color(0.564962, 0.564962, 0.564962, 0.792157)
+position = Vector2(-3441, 2789)
+rotation = 0.0942478
+
+[node name="DirectionalLight2D" parent="." index="11"]
+color = Color(0.667748, 0.526516, 0.909586, 1)
+energy = 1.17
+blend_mode = 1
+
+[connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]

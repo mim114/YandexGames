@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dpn0ixp3ysyl4"]
+[gd_scene load_steps=40 format=3 uid="uid://dpn0ixp3ysyl4"]
 
 [ext_resource type="Texture2D" uid="uid://b6ms0ba57km5w" path="res://src/graphics/tilesets/interior.png" id="1_4t4e8"]
 [ext_resource type="Script" path="res://scripts/objects/house_1.gd" id="1_ctm24"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b01honjnd6vy4" path="res://src/graphics/decals/brushes/brush050.png" id="5_bmnc7"]
 [ext_resource type="Texture2D" uid="uid://qgact6p26bc2" path="res://src/graphics/decals/blood.png" id="6_c8rj4"]
 [ext_resource type="Texture2D" uid="uid://cgwfvsahsn1bq" path="res://src/icon/icon.svg" id="7_3ma2w"]
+[ext_resource type="Texture2D" uid="uid://c7pu37k023h0j" path="res://src/graphics/objects/electric_hole.png" id="9_emvb4"]
+[ext_resource type="Texture2D" uid="uid://cikb5apecwuxa" path="res://src/graphics/objects/ventilation_hole.png" id="10_tqihl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nt7sp"]
 size = Vector2(2866, 2869)
@@ -292,6 +294,10 @@ script = ExtResource("1_ctm24")
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_nt7sp")
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-447, 848)
+polygon = PackedVector2Array(92, -92.3, 95, -89.3, 95, 88.5, 89.7, 94.5, -90.6, 94.5, -92, 93.6, -92, 92.3, -95, 89.3, -95, -88.5, -89, -94.3, 92, -94.5)
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_n15ee")
 format = 2
@@ -332,6 +338,14 @@ texture = ExtResource("7_3ma2w")
 modulate = Color(0.593134, 0.593134, 0.593134, 1)
 position = Vector2(120, 156)
 texture = ExtResource("6_c8rj4")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(-447, 848)
+texture = ExtResource("9_emvb4")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(-1156, -340)
+texture = ExtResource("10_tqihl")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

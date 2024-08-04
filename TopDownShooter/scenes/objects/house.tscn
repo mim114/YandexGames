@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://x5ksn8jrqprb"]
+[gd_scene load_steps=37 format=3 uid="uid://x5ksn8jrqprb"]
 
 [ext_resource type="Texture2D" uid="uid://b6ms0ba57km5w" path="res://src/graphics/tilesets/interior.png" id="1_3bgcs"]
 [ext_resource type="Script" path="res://scripts/objects/house.gd" id="1_iobxp"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b83sopki4pb01" path="res://scenes/objects/fan_anim.tscn" id="4_oo8gh"]
 [ext_resource type="Texture2D" uid="uid://du3iqbehu8gfw" path="res://src/graphics/decals/brushes/brush048.png" id="4_pvmxe"]
 [ext_resource type="Texture2D" uid="uid://1juqw0a2don2" path="res://src/icon/bullet-bill.svg" id="6_jtoga"]
+[ext_resource type="Texture2D" uid="uid://bvw7x5j4i2xpe" path="res://src/graphics/decals/ceiling_hole1.png" id="7_ni028"]
+[ext_resource type="Texture2D" uid="uid://frg340ihora7" path="res://src/graphics/objects/electric_box.png" id="8_nccxc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3qj4"]
 size = Vector2(2470, 2490)
@@ -290,6 +292,10 @@ script = ExtResource("1_iobxp")
 position = Vector2(197, 190)
 shape = SubResource("RectangleShape2D_s3qj4")
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(365, -416)
+polygon = PackedVector2Array(163.5, -130.4, 163.5, -129, 170.5, -127, 170.5, -125.3, 177.5, -118.3, 177.5, 118.5, 170.5, 127.5, 168, 127.5, 162.6, 130.5, -165, 130.5, -170.5, 127.7, -170.5, 126.3, -177.5, 119.3, -177.5, -117.5, -169.5, -127.5, -166.8, -127.5, -157.1, -130.5, 159.9, -130.5)
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_kednp")
 format = 2
@@ -319,10 +325,21 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_pvmxe")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.501407, 0.501406, 0.501406, 1)
+modulate = Color(0.501961, 0.501961, 0.501961, 0.337255)
 position = Vector2(-590, 969)
+rotation = -2.45742
 scale = Vector2(0.5, 0.5)
+skew = -0.0244346
 texture = ExtResource("6_jtoga")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.643137)
+position = Vector2(-586, 969)
+texture = ExtResource("7_ni028")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(365, -416)
+texture = ExtResource("8_nccxc")
 
 [node name="FanAnim" parent="." instance=ExtResource("4_oo8gh")]
 position = Vector2(-567, -581)
