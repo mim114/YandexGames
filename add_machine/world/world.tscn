@@ -1,0 +1,840 @@
+[gd_scene load_steps=18 format=3 uid="uid://d0ksk7k2h12p1"]
+
+[ext_resource type="Script" path="res://world/world.gd" id="1_y31gm"]
+[ext_resource type="PackedScene" uid="uid://cpjnl81jq2mba" path="res://world/bit.tscn" id="2_6ekai"]
+[ext_resource type="Texture2D" uid="uid://dmbjvf6x7m7iu" path="res://assets/question-sign_icon-icons.com_73445(1).png" id="3_5x1jw"]
+[ext_resource type="AudioStream" uid="uid://vuecm6ei2tuj" path="res://assets/2 - Galactic Odyssey (Loop).mp3" id="3_7ixuo"]
+[ext_resource type="AudioStream" uid="uid://bqmbamuj2in7i" path="res://assets/sound-notification-of-an-error-or-incorrect-value.mp3" id="3_bxu43"]
+[ext_resource type="FontFile" uid="uid://cxf1ul3py050v" path="res://assets/Game Paused DEMO.otf" id="3_ijsnw"]
+[ext_resource type="AudioStream" uid="uid://icaa4ghyrdql" path="res://assets/a-loud-button-press-sound.mp3" id="4_qiw1l"]
+[ext_resource type="Shader" path="res://world.gdshader" id="7_b38b0"]
+[ext_resource type="Texture2D" uid="uid://dy4uarfai464h" path="res://assets/use.png" id="8_fugyy"]
+[ext_resource type="Texture2D" uid="uid://8knkns2bpi43" path="res://assets/1492790846-9cancel_84247.png" id="8_p4lwc"]
+[ext_resource type="Texture2D" uid="uid://bhxjcmk10yy3" path="res://assets/theory.png" id="9_qrntj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5wtvu"]
+shader = ExtResource("7_b38b0")
+shader_parameter/value = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ev2t6"]
+shader = ExtResource("7_b38b0")
+shader_parameter/value = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvxtq"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7npop"]
+absorbent = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ircwm"]
+size = Vector2(18, 7)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxnmk"]
+radius = 7.0
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_y31gm")
+
+[node name="Fon" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.560784, 0.756863, 0.764706, 1)
+
+[node name="FonMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7ixuo")
+volume_db = 18.984
+
+[node name="IncorectInput" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bxu43")
+
+[node name="Button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qiw1l")
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Menu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = -162.0
+offset_right = 452.0
+offset_bottom = 56.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Menu/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Add" type="Button" parent="Menu/Control/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.882353, 0.737255, 0.443137, 1)
+theme_override_colors/font_focus_color = Color(0.572549, 0.431373, 0.145098, 1)
+theme_override_colors/font_color = Color(0.572549, 0.431373, 0.145098, 1)
+theme_override_fonts/font = ExtResource("3_ijsnw")
+theme_override_font_sizes/font_size = 50
+text = "Add"
+
+[node name="Label" type="Label" parent="Menu/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.572549, 0.431373, 0.145098, 1)
+theme_override_fonts/font = ExtResource("3_ijsnw")
+theme_override_font_sizes/font_size = 100
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hint" type="Button" parent="Menu/Control"]
+layout_mode = 1
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 64.0
+offset_bottom = 48.0
+icon = ExtResource("3_5x1jw")
+
+[node name="TopNumber" type="Label" parent="Menu/Control"]
+layout_mode = 0
+offset_left = 571.0
+offset_top = 60.0
+offset_right = 622.0
+offset_bottom = 102.0
+theme_override_colors/font_color = Color(0.0687983, 0.0687983, 0.0687983, 1)
+theme_override_fonts/font = ExtResource("3_ijsnw")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Overflow" type="Control" parent="Menu"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Menu/Overflow"]
+material = SubResource("ShaderMaterial_5wtvu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Overflow" type="Label" parent="Menu/Overflow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -473.5
+offset_top = -100.5
+offset_right = 473.5
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.712421, 0.0397816, 0.0593351, 1)
+theme_override_fonts/font = ExtResource("3_ijsnw")
+theme_override_font_sizes/font_size = 200
+text = "OVERFLOW"
+
+[node name="Explanation" type="Control" parent="Menu"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Blure" type="ColorRect" parent="Menu/Explanation"]
+material = SubResource("ShaderMaterial_ev2t6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1112.0
+offset_bottom = 616.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Menu/Explanation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 108.0
+offset_top = 44.0
+offset_right = 1004.0
+offset_bottom = 556.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fvxtq")
+
+[node name="Use" type="TextureRect" parent="Menu/Explanation/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_fugyy")
+expand_mode = 1
+
+[node name="Theory" type="TextureRect" parent="Menu/Explanation/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_qrntj")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/Explanation/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -152.0
+offset_top = 8.0
+offset_right = 152.0
+offset_bottom = 48.0
+grow_horizontal = 2
+
+[node name="Use" type="Button" parent="Menu/Explanation/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.882353, 0.737255, 0.443137, 1)
+theme_override_colors/font_focus_color = Color(0.572549, 0.431373, 0.145098, 1)
+theme_override_colors/font_color = Color(0.572549, 0.431373, 0.145098, 1)
+theme_override_fonts/font = ExtResource("3_ijsnw")
+theme_override_font_sizes/font_size = 30
+text = "Use"
+
+[node name="Theory" type="Button" parent="Menu/Explanation/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.882353, 0.737255, 0.443137, 1)
+theme_override_colors/font_focus_color = Color(0.572549, 0.431373, 0.145098, 1)
+theme_override_colors/font_color = Color(0.572549, 0.431373, 0.145098, 1)
+theme_override_fonts/font = ExtResource("3_ijsnw")
+theme_override_font_sizes/font_size = 30
+text = "Theory"
+
+[node name="Close" type="Button" parent="Menu/Explanation"]
+layout_mode = 0
+offset_left = 976.0
+offset_top = 72.0
+offset_right = 1016.0
+offset_bottom = 112.0
+icon = ExtResource("8_p4lwc")
+
+[node name="Beams" type="Node2D" parent="."]
+
+[node name="BeamBottom" type="StaticBody2D" parent="Beams"]
+position = Vector2(848, 500)
+rotation = 1.51844
+metadata/_edit_group_ = true
+
+[node name="CollisionBeamBottom" type="CollisionPolygon2D" parent="Beams/BeamBottom"]
+polygon = PackedVector2Array(3.99997, -256, 4, 224, -28, 224, -28, -225.641, -64.1726, -227.671, -62.4979, -259.627)
+
+[node name="PoligonBeamBottom" type="Polygon2D" parent="Beams/BeamBottom"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="BeamRoof" type="StaticBody2D" parent="Beams"]
+position = Vector2(848, 80)
+rotation = 1.5708
+physics_material_override = SubResource("PhysicsMaterial_7npop")
+metadata/_edit_group_ = true
+
+[node name="CollisionRoof" type="CollisionPolygon2D" parent="Beams/BeamRoof"]
+polygon = PackedVector2Array(15.9991, -248, 23.9484, -256, 39.8583, -256, 47.9991, -248, 48.0011, 296, 48.0011, 303.406, 56.0011, 304, 56.0012, 320, 8.00115, 320, 8.0011, 304, 16.0011, 304, 16.0011, 296)
+
+[node name="PolygonRoof" type="Polygon2D" parent="Beams/BeamRoof"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="Bowl" type="StaticBody2D" parent="Beams"]
+position = Vector2(560, 584)
+metadata/_edit_group_ = true
+
+[node name="CollisionBowl" type="CollisionPolygon2D" parent="Beams/Bowl"]
+polygon = PackedVector2Array(0, 16, 256, 16, 256, -48, 224, -48, 224, -16, -176, -16, -176, -48, -208, -48, -208, 16)
+
+[node name="PolygonBowl" type="Polygon2D" parent="Beams/Bowl"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="SafeButton" type="StaticBody2D" parent="Beams"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Beams/SafeButton"]
+polygon = PackedVector2Array(-32, -32, 1184, -32, 1184, 680, -32, 680, -32, 0, 0, 0, 0, 648, 1152, 648, 1152, 0, -32, 0)
+
+[node name="Columns" type="Node2D" parent="."]
+
+[node name="Column_01" type="StaticBody2D" parent="Columns"]
+position = Vector2(1088, 96)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_01" type="CollisionPolygon2D" parent="Columns/Column_01"]
+polygon = PackedVector2Array(-40, -16, -32, -24, 8, -24, 16, -16.1657, 16, 328, -16, 328, -16, 112, 0, 96, -16, 80, -16, 48, -40, 48)
+
+[node name="Polygon_01" type="Polygon2D" parent="Columns/Column_01"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="Column_02" type="StaticBody2D" parent="Columns"]
+position = Vector2(1032, 200)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_02" type="CollisionPolygon2D" parent="Columns/Column_02"]
+polygon = PackedVector2Array(-16, 0, 16, 0, 16, 232, -16, 232, -16, 40, 0, 24, -16, 8)
+
+[node name="Polygon_02" type="Polygon2D" parent="Columns/Column_02"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="Column_03" type="StaticBody2D" parent="Columns"]
+position = Vector2(976, 232)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_03" type="CollisionPolygon2D" parent="Columns/Column_03"]
+polygon = PackedVector2Array(-16, 0, 16, 0, 16, 200, -16, 200, -16, 40, 0, 24, -16, 8)
+
+[node name="Polygon_03" type="Polygon2D" parent="Columns/Column_03"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="Column_04" type="StaticBody2D" parent="Columns"]
+position = Vector2(920, 264)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_04" type="CollisionPolygon2D" parent="Columns/Column_04"]
+polygon = PackedVector2Array(-16, 0, 16, 0, 16, 168, -16, 168, -16, 40, 0, 24, -16, 8)
+
+[node name="Polygon_04" type="Polygon2D" parent="Columns/Column_04"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="Column_05" type="StaticBody2D" parent="Columns"]
+position = Vector2(864, 296)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_05" type="CollisionPolygon2D" parent="Columns/Column_05"]
+polygon = PackedVector2Array(-16, 0, 16, 0, 16, 136, -16, 136, -16, 40, 0, 24, -16, 8)
+
+[node name="Polygon_05" type="Polygon2D" parent="Columns/Column_05"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="Column_06" type="StaticBody2D" parent="Columns"]
+position = Vector2(808, 328)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_06" type="CollisionPolygon2D" parent="Columns/Column_06"]
+polygon = PackedVector2Array(-16, 0, 16, 0, 16, 104, -16, 104, -16, 40, 0, 24, -16, 8)
+
+[node name="Polygon_06" type="Polygon2D" parent="Columns/Column_06"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="Column_07" type="StaticBody2D" parent="Columns"]
+position = Vector2(752, 360)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_07" type="CollisionPolygon2D" parent="Columns/Column_07"]
+polygon = PackedVector2Array(-16, 0, 16, 0, 16, 72, -16, 72, -16, 40, 0, 24, -16, 8)
+
+[node name="Polygon_07" type="Polygon2D" parent="Columns/Column_07"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="Column_08" type="StaticBody2D" parent="Columns"]
+position = Vector2(696, 392)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_08" type="CollisionPolygon2D" parent="Columns/Column_08"]
+polygon = PackedVector2Array(-16, 0, 16, 0, 16, 40, -16, 40, -16, 40, 0, 24, -16, 8)
+
+[node name="Polygon_08" type="Polygon2D" parent="Columns/Column_08"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="Column_09" type="StaticBody2D" parent="Columns"]
+position = Vector2(640, 424)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_09" type="CollisionPolygon2D" parent="Columns/Column_09"]
+polygon = PackedVector2Array(-16, 0, 16, 0, 16, 8, -16, 8)
+
+[node name="Polygon_09" type="Polygon2D" parent="Columns/Column_09"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="Column_10" type="StaticBody2D" parent="Columns"]
+position = Vector2(579, 352)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_10" type="CollisionPolygon2D" parent="Columns/Column_10"]
+polygon = PackedVector2Array(-11, -280, 45, -280, 53, -272, 53, 24, 5, 24, 5, 80, -19, 80, -19, -272)
+
+[node name="Polygon_10" type="Polygon2D" parent="Columns/Column_10"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="TopColumn" type="Node2D" parent="Columns"]
+
+[node name="TopColumn_01" type="StaticBody2D" parent="Columns/TopColumn"]
+position = Vector2(992, 64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Columns/TopColumn/TopColumn_01"]
+polygon = PackedVector2Array(8, 8, 24, 8, 32, 15.625, 32, 88, 0, 88, 0, 15.875)
+
+[node name="Polygon2D" type="Polygon2D" parent="Columns/TopColumn/TopColumn_01"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="TopColumn_02" type="StaticBody2D" parent="Columns/TopColumn"]
+position = Vector2(936, 64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Columns/TopColumn/TopColumn_02"]
+polygon = PackedVector2Array(8, 8, 24, 8, 32, 16, 32, 120, 0, 120, 0, 16.1593)
+
+[node name="Polygon2D" type="Polygon2D" parent="Columns/TopColumn/TopColumn_02"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="TopColumn_03" type="StaticBody2D" parent="Columns/TopColumn"]
+position = Vector2(880, 64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Columns/TopColumn/TopColumn_03"]
+polygon = PackedVector2Array(8, 8, 24, 8, 32, 16, 32, 152, 0, 152, 0, 16.5555)
+
+[node name="Polygon2D" type="Polygon2D" parent="Columns/TopColumn/TopColumn_03"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="TopColumn_04" type="StaticBody2D" parent="Columns/TopColumn"]
+position = Vector2(824, 64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Columns/TopColumn/TopColumn_04"]
+polygon = PackedVector2Array(8, 8, 24, 8, 32, 15.6716, 32, 184, 0, 184, 0, 15.6716)
+
+[node name="Polygon2D" type="Polygon2D" parent="Columns/TopColumn/TopColumn_04"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="TopColumn_05" type="StaticBody2D" parent="Columns/TopColumn"]
+position = Vector2(768, 64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Columns/TopColumn/TopColumn_05"]
+polygon = PackedVector2Array(8, 8, 24, 8, 32, 16.2019, 32, 216, 0, 216, 0, 15.4948)
+
+[node name="Polygon2D" type="Polygon2D" parent="Columns/TopColumn/TopColumn_05"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="TopColumn_06" type="StaticBody2D" parent="Columns/TopColumn"]
+position = Vector2(712, 64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Columns/TopColumn/TopColumn_06"]
+polygon = PackedVector2Array(8, 8, 24, 8, 32, 16.6105, 32, 248, 0, 248, 0, 15.6741)
+
+[node name="Polygon2D" type="Polygon2D" parent="Columns/TopColumn/TopColumn_06"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="TopColumn_07" type="StaticBody2D" parent="Columns/TopColumn"]
+position = Vector2(656, 64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Columns/TopColumn/TopColumn_07"]
+polygon = PackedVector2Array(8, 8, 24, 8, 32, 16.0485, 32, 280, 0, 280, 0, 16)
+
+[node name="Polygon2D" type="Polygon2D" parent="Columns/TopColumn/TopColumn_07"]
+color = Color(0.270588, 0.521569, 0.533333, 1)
+
+[node name="PinJoins" type="Node2D" parent="."]
+
+[node name="PinJoint_01" type="PinJoint2D" parent="PinJoins"]
+position = Vector2(1032, 200)
+node_a = NodePath("../../Columns/Column_02")
+node_b = NodePath("../../Levers/Lever_01")
+disable_collision = false
+
+[node name="PinJoint_02" type="PinJoint2D" parent="PinJoins"]
+position = Vector2(976, 232)
+node_a = NodePath("../../Columns/Column_03")
+node_b = NodePath("../../Levers/Lever_02")
+disable_collision = false
+
+[node name="PinJoint_03" type="PinJoint2D" parent="PinJoins"]
+position = Vector2(920, 264)
+node_a = NodePath("../../Columns/Column_04")
+node_b = NodePath("../../Levers/Lever_03")
+disable_collision = false
+
+[node name="PinJoint_04" type="PinJoint2D" parent="PinJoins"]
+position = Vector2(864, 296)
+node_a = NodePath("../../Columns/Column_05")
+node_b = NodePath("../../Levers/Lever_04")
+disable_collision = false
+
+[node name="PinJoint_05" type="PinJoint2D" parent="PinJoins"]
+position = Vector2(808, 328)
+node_a = NodePath("../../Columns/Column_06")
+node_b = NodePath("../../Levers/Lever_05")
+disable_collision = false
+
+[node name="PinJoint_06" type="PinJoint2D" parent="PinJoins"]
+position = Vector2(752, 360)
+node_a = NodePath("../../Columns/Column_07")
+node_b = NodePath("../../Levers/Lever_06")
+disable_collision = false
+
+[node name="PinJoint_07" type="PinJoint2D" parent="PinJoins"]
+position = Vector2(696, 392)
+node_a = NodePath("../../Columns/Column_08")
+node_b = NodePath("../../Levers/Lever_07")
+disable_collision = false
+
+[node name="PinJoint_08" type="PinJoint2D" parent="PinJoins"]
+position = Vector2(640, 424)
+node_a = NodePath("../../Columns/Column_09")
+node_b = NodePath("../../Levers/Lever_08")
+disable_collision = false
+
+[node name="Levers" type="Node2D" parent="."]
+
+[node name="Lever_01" type="RigidBody2D" parent="Levers"]
+position = Vector2(1032, 200)
+rotation = -0.314159
+mass = 12.0
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_01" type="CollisionPolygon2D" parent="Levers/Lever_01"]
+polygon = PackedVector2Array(-32, -8, 0, 0, 24, -8, 8, -8, 0, -24, -8, -8)
+
+[node name="Polygon_01" type="Polygon2D" parent="Levers/Lever_01"]
+color = Color(0.572549, 0.431373, 0.145098, 1)
+
+[node name="Lever_02" type="RigidBody2D" parent="Levers"]
+position = Vector2(976, 232)
+rotation = -0.314159
+mass = 12.0
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_02" type="CollisionPolygon2D" parent="Levers/Lever_02"]
+polygon = PackedVector2Array(0, 0, 24, -8, 8, -8, -0.192017, -25.2975, -8, -8, -32, -8)
+
+[node name="Polygon_02" type="Polygon2D" parent="Levers/Lever_02"]
+color = Color(0.572549, 0.431373, 0.145098, 1)
+
+[node name="Lever_03" type="RigidBody2D" parent="Levers"]
+position = Vector2(920, 264)
+rotation = -0.314159
+mass = 12.0
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_03" type="CollisionPolygon2D" parent="Levers/Lever_03"]
+polygon = PackedVector2Array(0, 0, 24, -8, 8, -8.00006, -0.192017, -25.2975, -8, -8.00006, -32, -8)
+
+[node name="Polygon_03" type="Polygon2D" parent="Levers/Lever_03"]
+color = Color(0.572549, 0.431373, 0.145098, 1)
+
+[node name="Lever_04" type="RigidBody2D" parent="Levers"]
+position = Vector2(864, 296)
+rotation = -0.314159
+mass = 12.0
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_04" type="CollisionPolygon2D" parent="Levers/Lever_04"]
+polygon = PackedVector2Array(0, 0, 24, -8, 8, -7.99994, -0.192078, -25.2974, -8, -7.99994, -32, -8)
+
+[node name="Polygon_04" type="Polygon2D" parent="Levers/Lever_04"]
+color = Color(0.572549, 0.431373, 0.145098, 1)
+
+[node name="Lever_05" type="RigidBody2D" parent="Levers"]
+position = Vector2(808, 328)
+rotation = -0.314159
+mass = 12.0
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_05" type="CollisionPolygon2D" parent="Levers/Lever_05"]
+polygon = PackedVector2Array(0, 0, 24, -8, 8, -8, -0.192017, -25.2975, -8, -8, -32, -8)
+
+[node name="Polygon_05" type="Polygon2D" parent="Levers/Lever_05"]
+color = Color(0.572549, 0.431373, 0.145098, 1)
+
+[node name="Lever_06" type="RigidBody2D" parent="Levers"]
+position = Vector2(752, 360)
+rotation = -0.314159
+mass = 12.0
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_06" type="CollisionPolygon2D" parent="Levers/Lever_06"]
+polygon = PackedVector2Array(0, 0, 24, -8, 8, -8, -0.192017, -25.2975, -8, -8, -32, -8)
+
+[node name="Polygon_06" type="Polygon2D" parent="Levers/Lever_06"]
+color = Color(0.572549, 0.431373, 0.145098, 1)
+
+[node name="Lever_07" type="RigidBody2D" parent="Levers"]
+position = Vector2(696, 392)
+rotation = -0.314159
+mass = 12.0
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_07" type="CollisionPolygon2D" parent="Levers/Lever_07"]
+polygon = PackedVector2Array(0, 0, 24, -8, 8.00006, -8.00006, -0.191956, -25.2975, -7.99994, -8.00006, -32, -8)
+
+[node name="Polygon_07" type="Polygon2D" parent="Levers/Lever_07"]
+color = Color(0.572549, 0.431373, 0.145098, 1)
+
+[node name="Lever_08" type="RigidBody2D" parent="Levers"]
+position = Vector2(640, 424)
+rotation = -0.314159
+mass = 12.0
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon_08" type="CollisionPolygon2D" parent="Levers/Lever_08"]
+polygon = PackedVector2Array(0, 0, 24, -8, 8, -8, -0.192078, -25.2975, -8, -8, -32, -8)
+
+[node name="Polygon_08" type="Polygon2D" parent="Levers/Lever_08"]
+color = Color(0.572549, 0.431373, 0.145098, 1)
+
+[node name="Bits" type="Node2D" parent="."]
+position = Vector2(472, 54)
+
+[node name="Bit1" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(408, 391)
+
+[node name="Bit2" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(352, 402)
+
+[node name="Bit3" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(296, 394)
+
+[node name="Bit4" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(194, 482)
+
+[node name="Bit5" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(152, 482)
+
+[node name="Bit6" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(69, 488)
+
+[node name="Bit7" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(24, 477)
+
+[node name="Bit8" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(112, 458)
+
+[node name="Bit9" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(72, 450)
+
+[node name="Bit10" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(-16, 488)
+
+[node name="Bit11" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(-56, 488)
+
+[node name="Bit12" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(-24, 447)
+
+[node name="Bit13" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(104, 488)
+
+[node name="Bit14" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(32, 447)
+
+[node name="Bit15" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(8, 436)
+
+[node name="Bit16" parent="Bits" instance=ExtResource("2_6ekai")]
+position = Vector2(-64, 450)
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="Count1" type="Area2D" parent="Areas"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Count1"]
+position = Vector2(1036, 92)
+shape = SubResource("RectangleShape2D_ircwm")
+
+[node name="Count2" type="Area2D" parent="Areas"]
+position = Vector2(-55, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Count2"]
+position = Vector2(1036, 92)
+shape = SubResource("RectangleShape2D_ircwm")
+
+[node name="Count3" type="Area2D" parent="Areas"]
+position = Vector2(-112, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Count3"]
+position = Vector2(1036, 92)
+shape = SubResource("RectangleShape2D_ircwm")
+
+[node name="Count4" type="Area2D" parent="Areas"]
+position = Vector2(-168, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Count4"]
+position = Vector2(1036, 92)
+shape = SubResource("RectangleShape2D_ircwm")
+
+[node name="Count5" type="Area2D" parent="Areas"]
+position = Vector2(-224, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Count5"]
+position = Vector2(1036, 92)
+shape = SubResource("RectangleShape2D_ircwm")
+
+[node name="Count6" type="Area2D" parent="Areas"]
+position = Vector2(-280, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Count6"]
+position = Vector2(1036, 92)
+shape = SubResource("RectangleShape2D_ircwm")
+
+[node name="Count7" type="Area2D" parent="Areas"]
+position = Vector2(-335, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Count7"]
+position = Vector2(1036, 92)
+shape = SubResource("RectangleShape2D_ircwm")
+
+[node name="Count8" type="Area2D" parent="Areas"]
+position = Vector2(-391, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Count8"]
+position = Vector2(1036, 92)
+shape = SubResource("RectangleShape2D_ircwm")
+
+[node name="Add1" type="Area2D" parent="Areas"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Add1"]
+position = Vector2(1072, 197)
+shape = SubResource("CircleShape2D_oxnmk")
+
+[node name="Add2" type="Area2D" parent="Areas"]
+position = Vector2(-57, 32)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Add2"]
+position = Vector2(1072, 197)
+shape = SubResource("CircleShape2D_oxnmk")
+
+[node name="Add3" type="Area2D" parent="Areas"]
+position = Vector2(-112, 64)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Add3"]
+position = Vector2(1072, 197)
+shape = SubResource("CircleShape2D_oxnmk")
+
+[node name="Add4" type="Area2D" parent="Areas"]
+position = Vector2(-168, 96)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Add4"]
+position = Vector2(1072, 197)
+shape = SubResource("CircleShape2D_oxnmk")
+
+[node name="Add5" type="Area2D" parent="Areas"]
+position = Vector2(-224, 127)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Add5"]
+position = Vector2(1072, 197)
+shape = SubResource("CircleShape2D_oxnmk")
+
+[node name="Add6" type="Area2D" parent="Areas"]
+position = Vector2(-280, 159)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Add6"]
+position = Vector2(1072, 197)
+shape = SubResource("CircleShape2D_oxnmk")
+
+[node name="Add7" type="Area2D" parent="Areas"]
+position = Vector2(-337, 192)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Add7"]
+position = Vector2(1072, 197)
+shape = SubResource("CircleShape2D_oxnmk")
+
+[node name="Add8" type="Area2D" parent="Areas"]
+position = Vector2(-394, 224)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Add8"]
+position = Vector2(1072, 197)
+shape = SubResource("CircleShape2D_oxnmk")
+
+[node name="Overflow" type="Area2D" parent="Areas"]
+position = Vector2(-472, 240)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Overflow"]
+position = Vector2(1072, 197)
+shape = SubResource("CircleShape2D_oxnmk")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="pressed" from="Menu/Control/CenterContainer/VBoxContainer/HBoxContainer/Add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="Menu/Control/Hint" to="." method="_on_hint_pressed"]
+[connection signal="pressed" from="Menu/Explanation/Panel/HBoxContainer/Use" to="." method="_on_use_pressed"]
+[connection signal="pressed" from="Menu/Explanation/Panel/HBoxContainer/Theory" to="." method="_on_theory_pressed"]
+[connection signal="pressed" from="Menu/Explanation/Close" to="." method="_on_close_pressed"]
+[connection signal="body_entered" from="Areas/Count1" to="." method="_on_count_1_body_entered"]
+[connection signal="body_exited" from="Areas/Count1" to="." method="_on_count_1_body_exited"]
+[connection signal="body_entered" from="Areas/Count2" to="." method="_on_count_2_body_entered"]
+[connection signal="body_exited" from="Areas/Count2" to="." method="_on_count_2_body_exited"]
+[connection signal="body_entered" from="Areas/Count3" to="." method="_on_count_3_body_entered"]
+[connection signal="body_exited" from="Areas/Count3" to="." method="_on_count_3_body_exited"]
+[connection signal="body_entered" from="Areas/Count4" to="." method="_on_count_4_body_entered"]
+[connection signal="body_exited" from="Areas/Count4" to="." method="_on_count_4_body_exited"]
+[connection signal="body_entered" from="Areas/Count5" to="." method="_on_count_5_body_entered"]
+[connection signal="body_exited" from="Areas/Count5" to="." method="_on_count_5_body_exited"]
+[connection signal="body_entered" from="Areas/Count6" to="." method="_on_count_6_body_entered"]
+[connection signal="body_exited" from="Areas/Count6" to="." method="_on_count_6_body_exited"]
+[connection signal="body_entered" from="Areas/Count7" to="." method="_on_count_7_body_entered"]
+[connection signal="body_exited" from="Areas/Count7" to="." method="_on_count_7_body_exited"]
+[connection signal="body_entered" from="Areas/Count8" to="." method="_on_count_8_body_entered"]
+[connection signal="body_exited" from="Areas/Count8" to="." method="_on_count_8_body_exited"]
+[connection signal="body_entered" from="Areas/Add1" to="." method="_on_add_1_body_entered"]
+[connection signal="body_exited" from="Areas/Add1" to="." method="_on_add_1_body_exited"]
+[connection signal="body_entered" from="Areas/Add2" to="." method="_on_add_2_body_entered"]
+[connection signal="body_exited" from="Areas/Add2" to="." method="_on_add_2_body_exited"]
+[connection signal="body_entered" from="Areas/Add3" to="." method="_on_add_3_body_entered"]
+[connection signal="body_exited" from="Areas/Add3" to="." method="_on_add_3_body_exited"]
+[connection signal="body_entered" from="Areas/Add4" to="." method="_on_add_4_body_entered"]
+[connection signal="body_exited" from="Areas/Add4" to="." method="_on_add_4_body_exited"]
+[connection signal="body_entered" from="Areas/Add5" to="." method="_on_add_5_body_entered"]
+[connection signal="body_exited" from="Areas/Add5" to="." method="_on_add_5_body_exited"]
+[connection signal="body_entered" from="Areas/Add6" to="." method="_on_add_6_body_entered"]
+[connection signal="body_exited" from="Areas/Add6" to="." method="_on_add_6_body_exited"]
+[connection signal="body_entered" from="Areas/Add7" to="." method="_on_add_7_body_entered"]
+[connection signal="body_exited" from="Areas/Add7" to="." method="_on_add_7_body_exited"]
+[connection signal="body_entered" from="Areas/Add8" to="." method="_on_add_8_body_entered"]
+[connection signal="body_exited" from="Areas/Add8" to="." method="_on_add_8_body_exited"]
+[connection signal="body_entered" from="Areas/Overflow" to="." method="_on_overflow_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

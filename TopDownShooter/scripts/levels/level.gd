@@ -18,12 +18,13 @@ func _ready() -> void:
 		container.connect("open", container_opened)
 
 	for scout in get_tree().get_nodes_in_group("Scouts"):
-		scout.connect("laser", scout_firing_laser)
+		scout.connect("laser", scout_laser)
 
 
 #------WORK FUNCTIONS-----------------------------------------------------------
-func scout_firing_laser(pos : Vector2, direction : Vector2) -> void:
-	create_laser(pos, direction)
+func scout_laser(pos : Vector2, direction : Vector2) -> void:
+	#create_laser(pos, direction)
+	print('scout')
 
 
 func container_opened(pos : Vector2, direction : Vector2) -> void:
