@@ -17,13 +17,17 @@ config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/image="res://assets/board.png"
 config/icon="res://assets/bit_logo_icon_145454.png"
 
+[autoload]
+
+YandexSDK="*res://addons/yandex_sdk/yandex_sdk.gd"
+
 [display]
 
 window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg", "res://addons/yandex_sdk/plugin.cfg")
 
 [file_customization]
 

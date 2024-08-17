@@ -71,6 +71,7 @@ var add_number  := 0
 
 #------MAIN FUNCTIONS-----------------------------------------------------------
 func _ready():
+	YandexSDK.init_game()
 	fon_music.play()
 
 	polygon_column_01.polygon = collision_column_01.polygon
