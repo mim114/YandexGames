@@ -48,4 +48,3 @@ func _on_timer_shoot_timeout() -> void:
 
 func _on_timer_grenade_timeout() -> void:
 	can_grenade = true
-
